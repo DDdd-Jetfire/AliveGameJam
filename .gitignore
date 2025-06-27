@@ -1,0 +1,25 @@
+# Unity生成文件
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+Assets/AssetStoreTools*
+
+# 项目设置文件（保留ProjectSettings文件夹但排除敏感文件）
+ProjectSettings/ProjectSettings.asset
+ProjectSettings/EditorBuildSettings.asset
+ProjectSettings/DynamicsManager.asset
+
+# 用户/IDE文件
+*.userprefs
+*.csproj
+*.sln
+.vs/
+.vscode/
+
+# 系统文件
+.DS_Store
+Thumbs.db
