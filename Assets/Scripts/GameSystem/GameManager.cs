@@ -27,4 +27,9 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public void GoToNextScene(string sceneName)
+    {
+        SceneController.instance.LoadScene(sceneName);
+    }
 }

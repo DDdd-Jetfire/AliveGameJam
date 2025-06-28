@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BikeClipManager : MonoBehaviour
@@ -20,9 +21,11 @@ public class BikeClipManager : MonoBehaviour
     public string onVideoEventName = "VideoFinnished";
     public string finnishEventName = "PuzzleFinnished";
     public string rideBikeEventName = "RideBike";
+    public SceneAsset nextScene;
+
     void Start()
     {
-        GlobalEventManager.instance.RegisterEvent(receivedEventName, CheckAll);
+        //GlobalEventManager.instance.RegisterEvent(receivedEventName, CheckAll);
         GlobalEventManager.instance.RegisterEvent(onVideoEventName, OnVideoFinnished);
         BikeSquare[] bs = gameObject.transform.GetComponentsInChildren<BikeSquare>();
         foreach(var b in bs)
@@ -42,6 +45,7 @@ public class BikeClipManager : MonoBehaviour
                 {
                     if (isCorrectTarget1st[i] != bikeSquareList[i].isSelect)
                     {
+                        bikeSquareList[i].SetFalse();
                         isAllSelect = false;
                     }
                 }
@@ -57,12 +61,14 @@ public class BikeClipManager : MonoBehaviour
                 {
                     if (isCorrectTarget2st[i] != bikeSquareList[i].isSelect)
                     {
+                        bikeSquareList[i].SetFalse();
                         isAllSelect2 = false;
                     }
                 }
                 if (isAllSelect2)
                 {
-                    GlobalEventManager.instance.TriggerEvent(finnishEventName);
+                    //GlobalEventManager.instance.TriggerEvent(finnishEventName);
+                    GameManager.instance.GoToNextScene(nextScene.name);
                 }
                 break;
         }
@@ -75,9 +81,10 @@ public class BikeClipManager : MonoBehaviour
         bcs = BikeClipState.sta2;
     }
 
-    void Update()
+
+    public void NextButtonDown()
     {
-        
+        CheckAll();
     }
 
     private void SetAs1st()
@@ -95,10 +102,7 @@ public class BikeClipManager : MonoBehaviour
     {
         for (int i = 0; i < bikeSquareList.Count; i++)
         {
-            if (isCorrectTarget1st[i])
-            {
-                bikeSquareList[i].ResetPuzzle();
-            }
+            bikeSquareList[i].ResetPuzzle();
         }
     }
     private void SetAs2st()
@@ -114,7 +118,7 @@ public class BikeClipManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        GlobalEventManager.instance.UnregisterEvent(receivedEventName, CheckAll);
+        //GlobalEventManager.instance.UnregisterEvent(receivedEventName, CheckAll);
         GlobalEventManager.instance.UnregisterEvent(onVideoEventName, OnVideoFinnished);
     }
 }

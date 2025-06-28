@@ -416,6 +416,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1427990428}
+  - {fileID: 965847799}
   - {fileID: 599824381}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1000,7 +1001,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 599824383}
-        m_TargetAssemblyTypeName: BikeClipManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: RoomClipManager, Assembly-CSharp
         m_MethodName: NextButtonDown
         m_Mode: 1
         m_Arguments:
@@ -1413,7 +1414,7 @@ GameObject:
   - component: {fileID: 599824383}
   - component: {fileID: 599824382}
   m_Layer: 0
-  m_Name: bikeClipManager
+  m_Name: roomClipManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1427,7 +1428,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599824380}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.07}
   m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1480,18 +1481,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 599824380}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2894e527a32f9904ab4d39a02bd980f3, type: 3}
+  m_Script: {fileID: 11500000, guid: e29c336e2c801e04891d66053f50ac9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bikeSquareList: []
-  isCorrectTarget1st: 000000010000010000
-  isCorrectTarget2st: 000000000101000101
-  bcs: 0
-  receivedEventName: TriggerBikeButton
-  onVideoEventName: VideoFinnished
-  finnishEventName: PuzzleFinnished
-  rideBikeEventName: RideBike
-  nextScene: {fileID: 102900000, guid: f448023074e9c354194cd2be78cc3cfd, type: 3}
+  roomSquareList: []
+  isCorrectTarget1st: 000000010101010101
+  isCorrectTarget2st: 000000000000010000
+  isCorrectTarget3st: 000000000000000000
+  rcs: 0
+  onVideo1stEndName: Video1stFinnished
+  onVideo2stEndName: Video2stFinnished
+  vc1stEnd: 1stEnd
+  vc2stEnd: 2stEnd
+  nextScene: {fileID: 102900000, guid: 46c5726f270f82d41b28f04b9ad51fb1, type: 3}
+  tmpMessage: {fileID: 0}
+  vc1st: {fileID: 1427990423}
 --- !u!1 &686462665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,6 +1768,149 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &965847798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 965847799}
+  - component: {fileID: 965847803}
+  - component: {fileID: 965847802}
+  - component: {fileID: 965847801}
+  - component: {fileID: 965847800}
+  m_Layer: 0
+  m_Name: car
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &965847799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965847798}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalScale: {x: 6.3999996, y: 6.3999996, z: 6.3999996}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 96750053}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!328 &965847800
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965847798}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 45e26ae3572cdc34db98a363b48145f0, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 3
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
+--- !u!114 &965847801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965847798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21f7ed332d169f840ae220912ec7aee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vc: {fileID: 32900000, guid: 45e26ae3572cdc34db98a363b48145f0, type: 3}
+  vp: {fileID: 0}
+  renderTextureSize: {x: 1080, y: 1080}
+  isPlaying: 0
+  autoPlayAfterLoad: 0
+  isVideoLoop: 0
+  playSpeed: 1
+  onTriggerEventName: 2stEnd
+  videoPlayEventName: null
+  videoFinishEventName: Video2stFinnished
+--- !u!23 &965847802
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965847798}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9f7c502a28658e14a8287d6f9a808545, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &965847803
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965847798}
+  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &968131604
 GameObject:
   m_ObjectHideFlags: 0
@@ -3697,7 +3844,7 @@ GameObject:
   - component: {fileID: 1427990425}
   - component: {fileID: 1427990424}
   m_Layer: 0
-  m_Name: bike
+  m_Name: room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3758,9 +3905,9 @@ MonoBehaviour:
   autoPlayAfterLoad: 0
   isVideoLoop: 0
   playSpeed: 1
-  onTriggerEventName: RideBike
+  onTriggerEventName: 1stEnd
   videoPlayEventName: null
-  videoFinishEventName: VideoFinnished
+  videoFinishEventName: Video1stFinnished
 --- !u!23 &1427990426
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3820,7 +3967,7 @@ Transform:
   m_GameObject: {fileID: 1427990423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.05}
   m_LocalScale: {x: 6.3999996, y: 6.3999996, z: 6.3999996}
   m_ConstrainProportionsScale: 1
   m_Children: []
