@@ -35,12 +35,12 @@ Shader "Custom/CRTScreenEffect"
                 float2 centered = uv - 0.5;
                 float r = dot(centered, centered);
                 uv = uv + centered * r * _Distortion;
-
+                uv = clamp(uv, 0.001, 0.999);
                 // RGB Offset (Chromatic Aberration)
                 float2 offset = float2(_ColorOffset / _ScreenParams.x, 0);
-                float rCol = tex2D(_MainTex, uv + offset).r;
+                float rCol = tex2D(_MainTex, clamp(uv + offset, 0.001, 0.999)).r;
                 float gCol = tex2D(_MainTex, uv).g;
-                float bCol = tex2D(_MainTex, uv - offset).b;
+                float bCol = tex2D(_MainTex,  clamp(uv - offset, 0.001, 0.999)).b;
 
                 float3 color = float3(rCol, gCol, bCol);
 
