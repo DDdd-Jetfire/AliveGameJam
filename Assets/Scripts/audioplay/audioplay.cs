@@ -23,6 +23,19 @@ public class AudioPlayer : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         soundEffects = new AudioSource[soundEffectsclips.Length];
+
+
+        if (soundEffectsclips != null)
+        {
+            soundEffects = new AudioSource[soundEffectsclips.Length];
+            for (int i = 0; i < soundEffectsclips.Length; i++)
+            {
+                GameObject sfxObj = new GameObject($"SFX_{i}");
+                sfxObj.transform.SetParent(transform); // 设为子物体
+                soundEffects[i] = sfxObj.AddComponent<AudioSource>();
+                soundEffects[i].playOnAwake = false;
+            }
+        }
         InitializeAudioSource();
     }
 
@@ -30,7 +43,10 @@ public class AudioPlayer : MonoBehaviour
     {
         if (playOnAwake && clips.Length > 0)
         {
-            Play(1);
+            Play(0);
+            PlaySoundEffects(2);
+            SetSoundEffectVolume(2, 0.01f);
+            // PlaySoundEffects(1);
         }
     }
 
@@ -66,6 +82,16 @@ public class AudioPlayer : MonoBehaviour
             audioSource.clip = null;
         }
     }
+
+
+    public void SetSoundEffectVolume(int clipIndex, float newVolume)
+    {
+        clipIndex = Mathf.Clamp(clipIndex, 0, soundEffectsclips.Length - 1);
+
+        newVolume = Mathf.Clamp01(newVolume);
+        soundEffects[clipIndex].volume = newVolume;
+    }
+
 
     public void CancelAllSoundEffects()
     {
@@ -128,7 +154,12 @@ public class AudioPlayer : MonoBehaviour
             audioSource.UnPause();
         }
     }
-
+    public void Update()
+    {
+        SetLoop(loop);
+        SetVolume(volume);
+        SetPitch(pitch);
+    }
     public void SetVolume(float newVolume)
     {
         volume = Mathf.Clamp01(newVolume);

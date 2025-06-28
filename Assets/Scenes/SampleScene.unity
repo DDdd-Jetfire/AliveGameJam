@@ -261,10 +261,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips:
   - {fileID: 8300000, guid: 0acf173a78da56e46b1ab8d0a6a88dea, type: 3}
-  playOnAwake: 0
+  soundEffectsclips:
+  - {fileID: 8300000, guid: 872d900692d5764499024ea4cd32aee2, type: 3}
+  - {fileID: 8300000, guid: 022e708efb8f9934c9bd0296677e2600, type: 3}
+  - {fileID: 8300000, guid: 23fb00a8b0b277e489d35e62095d47dd, type: 3}
+  playOnAwake: 1
   loop: 0
   volume: 1
-  pitch: 1
+  pitch: 0.24
 --- !u!82 &1054651474
 AudioSource:
   m_ObjectHideFlags: 0
