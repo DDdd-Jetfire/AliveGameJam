@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
@@ -9,10 +9,10 @@ public class VideoController : MonoBehaviour
     public VideoClip vc;
     public VideoPlayer vp;
 
-    public RenderTexture rt;
-    public MeshRenderer mr;
+    private RenderTexture rt;
+    private MeshRenderer mr;
     public Vector2 renderTextureSize = new Vector2(1920, 1080);
-    public RenderTextureFormat textureFormat = RenderTextureFormat.ARGB32;
+    private RenderTextureFormat textureFormat = RenderTextureFormat.ARGB32;
 
     private bool isPrepareComplete = false;
     public bool isPlaying = false;
@@ -21,8 +21,17 @@ public class VideoController : MonoBehaviour
     public bool isVideoLoop = true;
     public float playSpeed = 1f;
 
+    public string onTriggerEventName = "null";
+    public string videoPlayEventName = "null";
+    public string videoFinishEventName = "null";
 
     void Start()
+    {
+        Init();
+        EventSetting();
+    }
+
+    private void Init()
     {
         vp = gameObject.GetComponent<VideoPlayer>();
         mr = gameObject.GetComponent<MeshRenderer>();
@@ -44,47 +53,67 @@ public class VideoController : MonoBehaviour
         vp.renderMode = VideoRenderMode.RenderTexture;
         vp.targetTexture = rt;
 
-        // ÉèÖÃSpriteRendererµÄ²ÄÖÊ
+        // è®¾ç½®SpriteRendererçš„æè´¨
         mr.material = new Material(Shader.Find("Unlit/Texture"));
         mr.material.mainTexture = rt;
 
-        // ×¼±¸²¢²¥·ÅÊÓÆµ
+        // å‡†å¤‡å¹¶æ’­æ”¾è§†é¢‘
         vp.Prepare();
         vp.prepareCompleted += OnVideoPrepared;
     }
 
-    private void Update()
+    private void EventSetting()
     {
+        if (onTriggerEventName != "null")
+        {
+            GlobalEventManager.instance.RegisterEvent(onTriggerEventName,PlayVideo);
+        }
 
+        if (videoPlayEventName != "null")
+        {
+            vp.started += (source) =>
+            {
+                GlobalEventManager.instance.TriggerEvent(videoPlayEventName);
+            };
+        }
+
+        if (videoFinishEventName != "null")
+        {
+            // å¼€å§‹æ’­æ”¾äº‹ä»¶
+            vp.loopPointReached += (source) =>
+            {
+                GlobalEventManager.instance.TriggerEvent(videoFinishEventName);
+            };
+        }
     }
 
     private void OnVideoPrepared(VideoPlayer vp)
     {
         Debug.Log($"{gameObject.name} Prepare Complete!");
         isPrepareComplete = true;
-        // ´¦ÀíµÚÒ»Ö¡
+        // å¤„ç†ç¬¬ä¸€å¸§
         StartCoroutine(HandleFirstFrame());
         //vp.Play();
     }
 
     IEnumerator HandleFirstFrame()
     {
-        // ÉèÖÃµ½µÚÒ»Ö¡
+        // è®¾ç½®åˆ°ç¬¬ä¸€å¸§
         vp.frame = 0;
 
-        // äÖÈ¾µÚÒ»Ö¡
+        // æ¸²æŸ“ç¬¬ä¸€å¸§
         vp.Play();
         vp.StepForward();
         vp.Pause();
 
-        // µÈ´ıÒ»Ö¡È·±£äÖÈ¾
+        // ç­‰å¾…ä¸€å¸§ç¡®ä¿æ¸²æŸ“
         yield return null;
         SetVideoSpeed(playSpeed);
 
-        // ×Ô¶¯²¥·Å
+        // è‡ªåŠ¨æ’­æ”¾
         if (autoPlayAfterLoad)
         {
-            yield return new WaitForSeconds(0.1f); // ¶ÌÔİÑÓ³Ù
+            yield return new WaitForSeconds(0.1f); // çŸ­æš‚å»¶è¿Ÿ
             PlayVideo();
         }
     }
