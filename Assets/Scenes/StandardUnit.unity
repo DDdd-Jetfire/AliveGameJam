@@ -142,6 +142,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6306787103367050315, guid: c6bcd11acdc784c3bac2fd0e97fb62e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7249636627786892570, guid: c6bcd11acdc784c3bac2fd0e97fb62e4, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -711,14 +715,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vc: {fileID: 32900000, guid: 3a242b40ff62bf34dbca6886de8b74f1, type: 3}
   vp: {fileID: 0}
-  rt: {fileID: 0}
-  mr: {fileID: 0}
   renderTextureSize: {x: 1920, y: 1080}
-  textureFormat: 0
   isPlaying: 0
   autoPlayAfterLoad: 0
   isVideoLoop: 1
   playSpeed: 1
+  onTriggerEventName: null
+  videoPlayEventName: null
+  videoFinishEventName: null
 --- !u!328 &954715472
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -836,7 +840,7 @@ Transform:
   m_GameObject: {fileID: 954715470}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -8.13, y: 5.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1137,7 +1141,7 @@ Transform:
   m_GameObject: {fileID: 2138413408}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.33, y: 0.07, z: 0}
+  m_LocalPosition: {x: -14.2, y: -0.44, z: 0}
   m_LocalScale: {x: 9.030312, y: 8.994324, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
