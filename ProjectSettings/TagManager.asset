@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Down
+    uniqueID: 1573478961
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UP
+    uniqueID: 1578243883
+    locked: 0
+  - name: UGUI
+    uniqueID: 3280021989
+    locked: 0
+  - name: Top
+    uniqueID: 4112400611
     locked: 0
