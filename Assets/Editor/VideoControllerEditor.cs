@@ -1,4 +1,4 @@
-using UnityEditor;
+ï»¿using UnityEditor;
 using UnityEngine;
 using UnityEngine.Video;
 
@@ -7,62 +7,62 @@ public class VideoControllerEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        // »æÖÆÄ¬ÈÏInspector
+        // ç»˜åˆ¶é»˜è®¤Inspector
         DrawDefaultInspector();
 
-        // Ìí¼Ó·Ö¸ôÏß
+        // æ·»åŠ åˆ†éš”çº¿
         EditorGUILayout.Space();
-        EditorGUILayout.LabelField("²¥·Å¿ØÖÆ", EditorStyles.boldLabel);
+        EditorGUILayout.LabelField("æ’­æ”¾æ§åˆ¶", EditorStyles.boldLabel);
 
-        // »ñÈ¡Ä¿±ê½Å±¾
+        // è·å–ç›®æ ‡è„šæœ¬
         VideoController controller = (VideoController)target;
 
-        // ´´½¨°´Å¥²¼¾Ö
+        // åˆ›å»ºæŒ‰é’®å¸ƒå±€
         EditorGUILayout.BeginHorizontal();
 
-        // ²¥·Å°´Å¥
-        if (GUILayout.Button("²¥·Å"))
+        // æ’­æ”¾æŒ‰é’®
+        if (GUILayout.Button("æ’­æ”¾"))
         {
             controller.PlayVideo();
         }
 
-        // ÔİÍ£°´Å¥
-        if (GUILayout.Button("ÔİÍ£"))
+        // æš‚åœæŒ‰é’®
+        if (GUILayout.Button("æš‚åœ"))
         {
             controller.PauseVideo();
         }
 
-        // Í£Ö¹°´Å¥
-        if (GUILayout.Button("Í£Ö¹"))
+        // åœæ­¢æŒ‰é’®
+        if (GUILayout.Button("åœæ­¢"))
         {
             controller.StopVideo();
         }
 
-        if (GUILayout.Button("¸ü¸Ä²¥·ÅËÙ¶È"))
+        if (GUILayout.Button("æ›´æ”¹æ’­æ”¾é€Ÿåº¦"))
         {
             controller.SetVideoSpeed(controller.playSpeed);
         }
 
         EditorGUILayout.EndHorizontal();
 
-        // µÚ¶şĞĞ°´Å¥
+        // ç¬¬äºŒè¡ŒæŒ‰é’®
         EditorGUILayout.BeginHorizontal();
 
         EditorGUILayout.EndHorizontal();
 
-        // Ìí¼Ó×´Ì¬ĞÅÏ¢
+        // æ·»åŠ çŠ¶æ€ä¿¡æ¯
         if (Application.isPlaying)
         {
             EditorGUILayout.Space();
-            EditorGUILayout.LabelField("µ±Ç°×´Ì¬", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("å½“å‰çŠ¶æ€", EditorStyles.boldLabel);
 
             if (controller.vp != null)
             {
-                EditorGUILayout.LabelField($"²¥·Å×´Ì¬: {(controller.isPlaying ? "²¥·ÅÖĞ" : "ÒÑÔİÍ£")}");
+                EditorGUILayout.LabelField($"æ’­æ”¾çŠ¶æ€: {(controller.isPlaying ? "æ’­æ”¾ä¸­" : "å·²æš‚åœ")}");
 
                 if (controller.vp.isPrepared)
                 {
-                    EditorGUILayout.LabelField($"½ø¶È: {controller.vp.time:F1}/{controller.vp.length:F1} Ãë");
+                    EditorGUILayout.LabelField($"è¿›åº¦: {controller.vp.time:F1}/{controller.vp.length:F1} ç§’");
                 }
             }
         }

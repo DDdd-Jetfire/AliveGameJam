@@ -5,6 +5,8 @@ using UnityEngine;
 public class InteractBase : MonoBehaviour,IInteractable
 {
 
+    public string clickEventName = "null";
+
     void Start()
     {
         
@@ -17,5 +19,9 @@ public class InteractBase : MonoBehaviour,IInteractable
     public virtual void Click()
     {
         Debug.Log("base click");
+        if (clickEventName != "null")
+        {
+            GlobalEventManager.instance.TriggerEvent(clickEventName);
+        }
     }
 }
