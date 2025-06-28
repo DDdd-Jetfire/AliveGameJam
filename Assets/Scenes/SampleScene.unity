@@ -352,19 +352,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3892276962030653993, guid: 60e314a5b2ab3214f8c0f765544008e3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 17.69373
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3892276962030653993, guid: 60e314a5b2ab3214f8c0f765544008e3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 9.939603
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3892276962030653993, guid: 60e314a5b2ab3214f8c0f765544008e3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0055
+      value: 2.0767
       objectReference: {fileID: 0}
     - target: {fileID: 3892276962030653993, guid: 60e314a5b2ab3214f8c0f765544008e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0083
+      value: -1.2968
       objectReference: {fileID: 0}
     - target: {fileID: 3892276962030653993, guid: 60e314a5b2ab3214f8c0f765544008e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -430,16 +430,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f7ed332d169f840ae220912ec7aee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vc: {fileID: 32900000, guid: 3a242b40ff62bf34dbca6886de8b74f1, type: 3}
+  vc: {fileID: 0}
   vp: {fileID: 0}
+  rt: {fileID: 0}
+  mr: {fileID: 0}
   renderTextureSize: {x: 1920, y: 1080}
+  textureFormat: 0
   isPlaying: 0
   autoPlayAfterLoad: 0
   isVideoLoop: 1
   playSpeed: 1
-  onTriggerEventName: null
-  videoPlayEventName: null
-  videoFinishEventName: null
 --- !u!328 &4932393146992067766
 VideoPlayer:
   m_ObjectHideFlags: 0
