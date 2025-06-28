@@ -46,6 +46,47 @@ public class ButtonAnimation : MonoBehaviour
         currentSequence.Append(transform.DOMoveX(currentX, 0.3f).SetEase(Ease.OutQuad));
         }
 
+    public void PlayBounceEffect()
+        {
+        // 初始位置
+        Vector3 originalPos = transform.localPosition;
+
+        // DoTween 动画序列
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(transform.DOLocalMoveX(originalPos.x + 0.3f, 0.3f)
+            .SetEase(Ease.OutQuad)) // 减速移动（easeOut）
+           .Append(transform.DOLocalMoveX(originalPos.x, 0.3f)
+            .SetEase(Ease.InQuad)) // 加速回来（easeIn）
+
+           .OnComplete(() =>
+           {
+               // 确保回原位以防数值漂移
+               transform.localPosition = originalPos;
+           });
+        }
+
+    public void PlayBounceEffect2()
+        {
+        // 初始位置
+        Vector3 originalPos = transform.localPosition;
+
+        // DoTween 动画序列
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(transform.DOLocalMoveX(originalPos.x - 0.3f, 0.3f)
+            .SetEase(Ease.OutQuad)) // 减速移动（easeOut）
+           .Append(transform.DOLocalMoveX(originalPos.x, 0.3f)
+            .SetEase(Ease.InQuad)) // 加速回来（easeIn）
+
+           .OnComplete(() =>
+           {
+               // 确保回原位以防数值漂移
+               transform.localPosition = originalPos;
+           });
+        }
+
+
     private void KillCurrentSequence()
         {
         if (currentSequence != null && currentSequence.IsActive())
@@ -55,3 +96,6 @@ public class ButtonAnimation : MonoBehaviour
             }
         }
     }
+
+
+
