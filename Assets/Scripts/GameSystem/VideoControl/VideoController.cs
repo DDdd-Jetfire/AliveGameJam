@@ -71,20 +71,22 @@ public class VideoController : MonoBehaviour
 
         if (videoPlayEventName != "null")
         {
-            vp.started += (source) =>
-            {
-                GlobalEventManager.instance.TriggerEvent(videoPlayEventName);
-            };
+            vp.started += OnVideoStart;
         }
 
         if (videoFinishEventName != "null")
         {
-            // 开始播放事件
-            vp.loopPointReached += (source) =>
-            {
-                GlobalEventManager.instance.TriggerEvent(videoFinishEventName);
-            };
+            vp.loopPointReached += OnVideoFinish;
         }
+    }
+
+    private void OnVideoStart(VideoPlayer source)
+    {
+        GlobalEventManager.instance.TriggerEvent(videoPlayEventName);
+    }
+    private void OnVideoFinish(VideoPlayer source)
+    {
+        GlobalEventManager.instance.TriggerEvent(videoFinishEventName);
     }
 
     private void OnVideoPrepared(VideoPlayer vp)
@@ -141,6 +143,21 @@ public class VideoController : MonoBehaviour
         {
             Debug.Log($"{gameObject.name} set play speed to {speed}");
             vp.playbackSpeed = speed;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // 注销事件
+        GlobalEventManager.instance.UnregisterEvent(onTriggerEventName, PlayVideo);
+        if (videoPlayEventName != "null")
+        {
+            vp.started -= OnVideoStart;
+        }
+
+        if (videoFinishEventName != "null")
+        {
+            vp.loopPointReached -= OnVideoFinish;
         }
     }
 }

@@ -18,7 +18,7 @@ public class InteractBase : MonoBehaviour,IInteractable
     }
     public virtual void Click()
     {
-        Debug.Log("base click");
+        Debug.Log("click");
         if (clickEventName != "null")
         {
             GlobalEventManager.instance.TriggerEvent(clickEventName);
