@@ -15,10 +15,11 @@ public class VideoController : MonoBehaviour
     public RenderTextureFormat textureFormat = RenderTextureFormat.ARGB32;
 
     private bool isPrepareComplete = false;
-
+    public bool isPlaying = false;
 
     public bool autoPlayAfterLoad = false;
     public bool isVideoLoop = true;
+    public float playSpeed = 1f;
 
 
     void Start()
@@ -59,7 +60,7 @@ public class VideoController : MonoBehaviour
 
     private void OnVideoPrepared(VideoPlayer vp)
     {
-        Debug.Log($"{gameObject.name}+ Prepare Complete!");
+        Debug.Log($"{gameObject.name} Prepare Complete!");
         isPrepareComplete = true;
         // 处理第一帧
         StartCoroutine(HandleFirstFrame());
@@ -78,6 +79,7 @@ public class VideoController : MonoBehaviour
 
         // 等待一帧确保渲染
         yield return null;
+        SetVideoSpeed(playSpeed);
 
         // 自动播放
         if (autoPlayAfterLoad)
@@ -91,15 +93,18 @@ public class VideoController : MonoBehaviour
     {
         if (!isPrepareComplete) return;
         vp.Play();
+        isPlaying = true;
     }
     public void PauseVideo()
     {
         if (!isPrepareComplete) return;
         vp.Pause();
+        isPlaying = false;
     }
     public void StopVideo()
     {
         vp.Stop();
+        isPlaying = false;
     }
     public void SetVideoSpeed(float speed)
     {
