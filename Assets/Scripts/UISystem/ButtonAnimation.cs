@@ -6,9 +6,11 @@ public class ButtonAnimation : MonoBehaviour
     {
     private Sequence currentSequence;
     float currentX;
+    Vector3 originalPos;
     private void Start()
         {
         currentX = this.transform.position.x;
+        originalPos = this.transform.position;
         }
 
     public void Animation_Rotate()
@@ -48,41 +50,38 @@ public class ButtonAnimation : MonoBehaviour
 
     public void PlayBounceEffect()
         {
-        // 初始位置
-        Vector3 originalPos = transform.localPosition;
 
         // DoTween 动画序列
         Sequence seq = DOTween.Sequence();
 
-        seq.Append(transform.DOLocalMoveX(originalPos.x + 0.3f, 0.3f)
+        seq.Append(transform.DOLocalMoveX(originalPos.x + 10f, 0.3f)
             .SetEase(Ease.OutQuad)) // 减速移动（easeOut）
-           .Append(transform.DOLocalMoveX(originalPos.x, 0.3f)
+           .Append(transform.DOLocalMoveX(originalPos.x - 10f, 0.3f)
             .SetEase(Ease.InQuad)) // 加速回来（easeIn）
 
            .OnComplete(() =>
            {
                // 确保回原位以防数值漂移
-               transform.localPosition = originalPos;
+               //transform.localPosition = originalPos;
            });
         }
 
     public void PlayBounceEffect2()
         {
-        // 初始位置
-        Vector3 originalPos = transform.localPosition;
+
 
         // DoTween 动画序列
         Sequence seq = DOTween.Sequence();
 
-        seq.Append(transform.DOLocalMoveX(originalPos.x - 0.3f, 0.3f)
+        seq.Append(transform.DOLocalMoveX(originalPos.x - 10f, 0.3f)
             .SetEase(Ease.OutQuad)) // 减速移动（easeOut）
-           .Append(transform.DOLocalMoveX(originalPos.x, 0.3f)
+           .Append(transform.DOLocalMoveX(originalPos.x + 10f, 0.3f)
             .SetEase(Ease.InQuad)) // 加速回来（easeIn）
 
            .OnComplete(() =>
            {
                // 确保回原位以防数值漂移
-               transform.localPosition = originalPos;
+               //transform.localPosition = originalPos;
            });
         }
 

@@ -207,7 +207,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1514243921}
         m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
-        m_MethodName: Animation_Back
+        m_MethodName: PlayBounceEffect2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1778,7 +1778,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1820153910}
         m_TargetAssemblyTypeName: ButtonAnimation, Assembly-CSharp
-        m_MethodName: Animation_Forward
+        m_MethodName: PlayBounceEffect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
