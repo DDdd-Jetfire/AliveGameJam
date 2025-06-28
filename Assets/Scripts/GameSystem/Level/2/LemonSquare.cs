@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BikeSquare : InteractBase
+public class LemonSquare : InteractBase
 {
     public bool isCorrectSquare = false;
     public bool isSelect = false;
@@ -10,6 +10,7 @@ public class BikeSquare : InteractBase
     public GameObject correct;
     public GameObject fault;
 
+    public VideoController vc;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class BikeSquare : InteractBase
         if (isSelect)
         {
             correct.SetActive(true);
+            vc.PlayVideo();
             //if (isCorrectSquare)
             //{
             //    correct.SetActive(true);
@@ -63,6 +65,6 @@ public class BikeSquare : InteractBase
 
     private void OnDestroy()
     {
-        
+
     }
 }

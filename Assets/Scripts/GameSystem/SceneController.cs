@@ -8,9 +8,9 @@ public class SceneController : MonoBehaviour
     // 单例实例
     public static SceneController instance;
 
-    [Header("加载设置")]
-    [SerializeField] private GameObject loadingScreen; // 可选：加载UI界面
-    [SerializeField] private float minLoadTime = 1f;   // 可选：最小加载时间（避免闪屏）
+    //[Header("加载设置")]
+    //[SerializeField] private GameObject loadingScreen; // 可选：加载UI界面
+    //[SerializeField] private float minLoadTime = 1f;   // 可选：最小加载时间（避免闪屏）
 
     void Awake()
     {
