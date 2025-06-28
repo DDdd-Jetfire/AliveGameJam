@@ -12,6 +12,8 @@ public class LemonSquare : InteractBase
 
     public VideoController vc;
 
+    public bool isPlayed = false;
+
     private void Start()
     {
         if (correct == null || fault == null)
@@ -30,7 +32,12 @@ public class LemonSquare : InteractBase
         if (isSelect)
         {
             correct.SetActive(true);
-            vc.PlayVideo();
+
+            if (!isPlayed)
+            {
+                vc.PlayVideo();
+                isPlayed = true;
+            }
             //if (isCorrectSquare)
             //{
             //    correct.SetActive(true);

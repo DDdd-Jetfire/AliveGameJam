@@ -1796,13 +1796,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 965847798}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 6.3999996, y: 6.3999996, z: 6.3999996}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 96750053}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!328 &965847800
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -1851,7 +1851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f7ed332d169f840ae220912ec7aee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vc: {fileID: 32900000, guid: 45e26ae3572cdc34db98a363b48145f0, type: 3}
+  vc: {fileID: 32900000, guid: 79a7cbd872d7d1f4eb65dcf414831991, type: 3}
   vp: {fileID: 0}
   renderTextureSize: {x: 1080, y: 1080}
   isPlaying: 0
@@ -3898,7 +3898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f7ed332d169f840ae220912ec7aee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vc: {fileID: 32900000, guid: 45e26ae3572cdc34db98a363b48145f0, type: 3}
+  vc: {fileID: 32900000, guid: 6369957ae24be0d4ba5be97cc2e6f673, type: 3}
   vp: {fileID: 0}
   renderTextureSize: {x: 1080, y: 1080}
   isPlaying: 0
