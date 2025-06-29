@@ -19,12 +19,49 @@ public class CircleBehavior : MonoBehaviour
 
         SetColorFromTexture();
         }
+    //private void SetColorFromTexture()
+    //    {
+    //    Vector2 worldPos = transform.position;
+    //    Vector2 texCoord = WorldToTextureCoord(worldPos);
 
+    //    // 圆的直径（世界单位）转换为像素单位
+    //    float worldDiameter = radius * 2f;
+
+    //    // 先估算贴图尺寸与世界单位的比例（假设背景是 10 单位宽）
+    //    float worldWidth = 10f;
+    //    float pixelsPerUnitX = sourceTexture.width / worldWidth;
+    //    float pixelDiameter = worldDiameter * pixelsPerUnitX;
+
+    //    int halfSize = Mathf.RoundToInt(pixelDiameter / 2f);
+    //    int centerX = Mathf.RoundToInt(texCoord.x);
+    //    int centerY = Mathf.RoundToInt(texCoord.y);
+
+    //    // 避免越界
+    //    int minX = Mathf.Max(0, centerX - halfSize);
+    //    int maxX = Mathf.Min(sourceTexture.width - 1, centerX + halfSize);
+    //    int minY = Mathf.Max(0, centerY - halfSize);
+    //    int maxY = Mathf.Min(sourceTexture.height - 1, centerY + halfSize);
+
+    //    Color total = Color.black;
+    //    int count = 0;
+
+    //    for (int y = minY; y <= maxY; y++)
+    //        {
+    //        for (int x = minX; x <= maxX; x++)
+    //            {
+    //            total += sourceTexture.GetPixel(x, y);
+    //            count++;
+    //            }
+    //        }
+
+    //    Color avgColor = (count > 0) ? total / count : Color.white;
+    //    GetComponent<SpriteRenderer>().color = avgColor;
+    //    }
     private void SetColorFromTexture()
         {
         Debug.Log("颜色设置成功!");
         Vector2 worldPos = transform.position;
-        Vector2 texCoord = WorldToTextureCoord(worldPos);
+        Vector2 texCoord = WorldToTextureCoord(worldPos) * 1.3f;
         Color sampledColor = sourceTexture.GetPixel((int)texCoord.x, (int)texCoord.y);
         GetComponent<SpriteRenderer>().color = sampledColor;
         }
