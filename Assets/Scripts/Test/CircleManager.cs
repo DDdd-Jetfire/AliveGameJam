@@ -12,6 +12,7 @@ public class CircleManager : MonoBehaviour
         GameObject circle = Instantiate(circlePrefab, startPos, Quaternion.identity);
         circle.transform.position = Pivot.transform.position;
         circle.transform.localScale = Pivot.transform.localScale;
+        Pivot.GetComponent<SpriteRenderer>().enabled = false;
         circle.GetComponent<CircleBehavior>().Initialize(backgroundTexture);
         }
     }

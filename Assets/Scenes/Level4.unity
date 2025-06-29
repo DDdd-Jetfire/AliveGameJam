@@ -852,6 +852,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4398530043834776013, guid: 128409a232992aa41804d8ab6cbc33d8, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 16e9bdcc5d01ae544990303047fef1a6, type: 2}
     - target: {fileID: 4989742439819511021, guid: 128409a232992aa41804d8ab6cbc33d8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

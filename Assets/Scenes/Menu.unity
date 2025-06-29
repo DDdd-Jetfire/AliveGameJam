@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f7ed332d169f840ae220912ec7aee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vc: {fileID: 32900000, guid: b79a66a3f8c51234ca1bf3c6a41777bf, type: 3}
+  vc: {fileID: 32900000, guid: 435d8c46d8b3b3f49b1fe0840655a9d9, type: 3}
   vp: {fileID: 0}
   renderTextureSize: {x: 736, y: 736}
   isPlaying: 0
