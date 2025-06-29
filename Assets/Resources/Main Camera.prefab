@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 7249636627786892570}
   - component: {fileID: 7980502352546660810}
   - component: {fileID: 6306787103367050315}
+  - component: {fileID: 3346084879871799448}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -278,6 +279,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crtMaterial: {fileID: 2100000, guid: af8823f6ea0754c2ba5a4686cf54c6e1, type: 2}
+--- !u!114 &3346084879871799448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815486813440171820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaa6b3e1d91aa4abaaedf8d19e88ad5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blurMaterial: {fileID: 2100000, guid: c9d2fee08e926466497bbfae8e779ba2, type: 2}
+  blurSize: 1
 --- !u!1 &6395705138153813525
 GameObject:
   m_ObjectHideFlags: 0
