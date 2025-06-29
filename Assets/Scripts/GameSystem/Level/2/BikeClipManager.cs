@@ -43,10 +43,20 @@ public class BikeClipManager : MonoBehaviour
                 bool isAllSelect = true;
                 for (int i = 0; i < bikeSquareList.Count; i++)
                 {
-                    if (isCorrectTarget1st[i] != bikeSquareList[i].isSelect)
+                    if (isCorrectTarget1st[i])
                     {
-                        bikeSquareList[i].SetFalse();
-                        isAllSelect = false;
+                        if (!bikeSquareList[i].isSelect)
+                        {
+                            bikeSquareList[i].SetFalse();
+                            isAllSelect = false;
+                        }
+                    }
+                    else
+                    {
+                        if (bikeSquareList[i].isSelect)
+                        {
+                            bikeSquareList[i].SetFalse();
+                        }
                     }
                 }
                 if (isAllSelect)
@@ -59,16 +69,31 @@ public class BikeClipManager : MonoBehaviour
                 bool isAllSelect2 = true;
                 for (int i = 0; i < bikeSquareList.Count; i++)
                 {
-                    if (isCorrectTarget2st[i] != bikeSquareList[i].isSelect)
+                    if (isCorrectTarget2st[i])
                     {
-                        bikeSquareList[i].SetFalse();
-                        isAllSelect2 = false;
+                        if (!bikeSquareList[i].isSelect)
+                        {
+                            bikeSquareList[i].SetFalse();
+                            isAllSelect2 = false;
+                        }
+                    }
+                    else
+                    {
+                        if (bikeSquareList[i].isSelect)
+                        {
+                            bikeSquareList[i].SetFalse();
+                        }
                     }
                 }
                 if (isAllSelect2)
                 {
                     //GlobalEventManager.instance.TriggerEvent(finnishEventName);
                     GameManager.instance.UpdateHumanValue(70);
+                    GameManager.instance.GoToNextScene(nextScene.name);
+                }
+                else
+                {
+                    GameManager.instance.UpdateHumanValue(0);
                     GameManager.instance.GoToNextScene(nextScene.name);
                 }
                 break;
