@@ -132,8 +132,8 @@ Shader "Custom/backShader2"
                     float cloudTime = _Time.y * 0.5;
                     float cloudY = -0.5;
 
-                    float3 cloudCol1 = float3(1.0, 0.886, 0.584);
-                    float3 cloudCol2 = float3(1.0, 0.886, 0.584);
+                    float3 cloudCol1 = float3(0.905, 0.423, 0.992);
+                    float3 cloudCol2 = float3(0.905, 0.423, 0.992);
                     float cloudVal1 = sdCloud(cloudUV * 6.0 + float2(0.0,0.4),
                                          float2(0.1 + sin(cloudTime + 140.5) * 0.1,cloudY),
                                          float2(1.05 + cos(cloudTime * 0.9 - 36.56) * 0.1, cloudY),
