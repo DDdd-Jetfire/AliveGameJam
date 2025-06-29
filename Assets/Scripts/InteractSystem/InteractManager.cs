@@ -16,7 +16,7 @@ public class InteractManager : MonoBehaviour
 
     [Header("Interact Settings")]
     public LayerMask interactableLayer; // 可交互物体层级
-    public float rayDistance = 2f; // 射线检测距离
+    private  float rayDistance = 0.2f; // 射线检测距离
     private enum CursorState
     {
         normal,

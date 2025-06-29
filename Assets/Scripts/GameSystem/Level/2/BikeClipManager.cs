@@ -68,6 +68,7 @@ public class BikeClipManager : MonoBehaviour
                 if (isAllSelect2)
                 {
                     //GlobalEventManager.instance.TriggerEvent(finnishEventName);
+                    GameManager.instance.UpdateHumanValue(70);
                     GameManager.instance.GoToNextScene(nextScene.name);
                 }
                 break;
