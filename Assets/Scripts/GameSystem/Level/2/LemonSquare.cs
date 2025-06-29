@@ -14,6 +14,10 @@ public class LemonSquare : InteractBase
 
     public bool isPlayed = false;
 
+    public SpriteRenderer spr;
+    public Sprite unSelect;
+    public Sprite inSelect;
+
     private void Start()
     {
         if (correct == null || fault == null)
@@ -21,6 +25,7 @@ public class LemonSquare : InteractBase
             Debug.Log("missing object");
             return;
         }
+        spr = gameObject.GetComponent<SpriteRenderer>();
         correct.SetActive(false);
         fault.SetActive(false);
     }
@@ -32,6 +37,7 @@ public class LemonSquare : InteractBase
         if (isSelect)
         {
             correct.SetActive(true);
+            spr.sprite = inSelect;
 
             if (!isPlayed)
             {
@@ -49,6 +55,7 @@ public class LemonSquare : InteractBase
         }
         else
         {
+            spr.sprite = unSelect;
             correct.SetActive(false);
             fault.SetActive(false);
         }
@@ -65,6 +72,7 @@ public class LemonSquare : InteractBase
     public void ResetPuzzle()
     {
         isSelect = false;
+        spr.sprite = unSelect;
         isCorrectSquare = false;
         correct.SetActive(false);
         fault.SetActive(false);
