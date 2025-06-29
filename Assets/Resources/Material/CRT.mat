@@ -62,7 +62,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BumpScale: 1
-    - _ColorOffset: 8.63
+    - _ColorOffset: 2.1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _Distortion: 0.2
@@ -75,10 +75,10 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _ScanlineCount: 150
-    - _ScanlineIntensity: -1.8
+    - _ScanlineIntensity: 0.2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 500
+    - _Speed: 2
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
