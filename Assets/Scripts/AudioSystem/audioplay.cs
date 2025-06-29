@@ -19,24 +19,67 @@ public class AudioPlayer : MonoBehaviour
     private AudioSource audioSource;
     private int currentClipIndex = 0;
 
+    //void Awake()
+    //{
+    //    audioSource = GetComponent<AudioSource>();
+    //    soundEffects = new AudioSource[soundEffectsclips.Length];
+    //
+    //
+    //    if (soundEffectsclips != null)
+    //    {
+    //        soundEffects = new AudioSource[soundEffectsclips.Length];
+    //        for (int i = 0; i < soundEffectsclips.Length; i++)
+    //        {
+    //            GameObject sfxObj = new GameObject($"SFX_{i}");
+    //            sfxObj.transform.SetParent(transform); // 设为子物体
+    //            soundEffects[i] = sfxObj.AddComponent<AudioSource>();
+    //            soundEffects[i].playOnAwake = false;
+    //        }
+    //    }
+    //    InitializeAudioSource();
+    //}
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        InitializeAudioSource();
+
+        // 开始异步初始化协程
+        StartCoroutine(InitializeSoundEffectsAsync());
+    }
+
+    private bool isInitializing = false;
+    // 异步初始化音效系统
+    IEnumerator InitializeSoundEffectsAsync()
+    {
+        if (soundEffectsclips == null || soundEffectsclips.Length == 0)
+            yield break;
+
+        isInitializing = true;
         soundEffects = new AudioSource[soundEffectsclips.Length];
 
-
-        if (soundEffectsclips != null)
+        for (int i = 0; i < soundEffectsclips.Length; i++)
         {
-            soundEffects = new AudioSource[soundEffectsclips.Length];
-            for (int i = 0; i < soundEffectsclips.Length; i++)
+            // 每帧最多创建2个音频源避免卡顿
+            if (i > 0 && i % 2 == 0)
             {
-                GameObject sfxObj = new GameObject($"SFX_{i}");
-                sfxObj.transform.SetParent(transform); // 设为子物体
-                soundEffects[i] = sfxObj.AddComponent<AudioSource>();
-                soundEffects[i].playOnAwake = false;
+                // 每创建2个等待一帧
+                yield return null;
             }
+
+            GameObject sfxObj = new GameObject($"SFX_{i}");
+            sfxObj.transform.SetParent(transform);
+            soundEffects[i] = sfxObj.AddComponent<AudioSource>();
+            soundEffects[i].playOnAwake = false;
+            soundEffects[i].clip = soundEffectsclips[i];
+
+            // 可选：设置其他音频属性
+            soundEffects[i].volume = 0.8f;
+            soundEffects[i].spatialBlend = 0; // 2D音效
         }
-        InitializeAudioSource();
+
+        isInitializing = false;
+        Debug.Log($"异步初始化完成，共创建 {soundEffectsclips.Length} 个音效源");
     }
 
     void Start()
