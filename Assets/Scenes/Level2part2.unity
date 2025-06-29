@@ -1221,6 +1221,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   rayDistance: 2
+  maxRayCD: 0.1
 --- !u!4 &472692913
 Transform:
   m_ObjectHideFlags: 0
@@ -1716,6 +1717,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 2058613781}
   fault: {fileID: 1438000574}
+  spr: {fileID: 0}
+  unSelect: {fileID: 21300000, guid: 815982cc25595c544a7124a07fc84a31, type: 3}
+  inSelect: {fileID: 21300000, guid: 7d4c1d4ff63d04b49add76d561616e74, type: 3}
 --- !u!212 &805202928
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1822,7 +1826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5617532537870594923, guid: b30b82027219e79459bea3a52f15d67e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5617532537870594923, guid: b30b82027219e79459bea3a52f15d67e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1863,6 +1867,10 @@ PrefabInstance:
     - target: {fileID: 8142841265724429761, guid: b30b82027219e79459bea3a52f15d67e, type: 3}
       propertyPath: m_Name
       value: BrowserCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9168794658775799435, guid: b30b82027219e79459bea3a52f15d67e, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2166,6 +2174,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 24241402}
   fault: {fileID: 1897577263}
+  spr: {fileID: 0}
+  unSelect: {fileID: 21300000, guid: 815982cc25595c544a7124a07fc84a31, type: 3}
+  inSelect: {fileID: 21300000, guid: 7d4c1d4ff63d04b49add76d561616e74, type: 3}
 --- !u!1 &977895359
 GameObject:
   m_ObjectHideFlags: 0
@@ -2336,6 +2347,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 1006003279}
   fault: {fileID: 113575438}
+  spr: {fileID: 0}
+  unSelect: {fileID: 21300000, guid: 815982cc25595c544a7124a07fc84a31, type: 3}
+  inSelect: {fileID: 21300000, guid: 7d4c1d4ff63d04b49add76d561616e74, type: 3}
 --- !u!212 &1002337496
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2666,6 +2680,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 1505147775}
   fault: {fileID: 1036640941}
+  spr: {fileID: 0}
+  unSelect: {fileID: 21300000, guid: 815982cc25595c544a7124a07fc84a31, type: 3}
+  inSelect: {fileID: 21300000, guid: 7d4c1d4ff63d04b49add76d561616e74, type: 3}
 --- !u!212 &1010892548
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3637,6 +3654,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 1337319675}
   fault: {fileID: 1158773772}
+  spr: {fileID: 0}
+  unSelect: {fileID: 21300000, guid: 815982cc25595c544a7124a07fc84a31, type: 3}
+  inSelect: {fileID: 21300000, guid: 7d4c1d4ff63d04b49add76d561616e74, type: 3}
 --- !u!212 &1173276838
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3791,6 +3811,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 1090251601}
   fault: {fileID: 1847617005}
+  spr: {fileID: 0}
+  unSelect: {fileID: 21300000, guid: 815982cc25595c544a7124a07fc84a31, type: 3}
+  inSelect: {fileID: 21300000, guid: 7d4c1d4ff63d04b49add76d561616e74, type: 3}
 --- !u!212 &1210526497
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4855,6 +4878,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 1838546151}
   fault: {fileID: 16248345}
+  spr: {fileID: 0}
+  unSelect: {fileID: 21300000, guid: 815982cc25595c544a7124a07fc84a31, type: 3}
+  inSelect: {fileID: 21300000, guid: 7d4c1d4ff63d04b49add76d561616e74, type: 3}
 --- !u!212 &1923818347
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5446,6 +5472,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 311625823}
   fault: {fileID: 1623016047}
+  spr: {fileID: 0}
+  unSelect: {fileID: 21300000, guid: 815982cc25595c544a7124a07fc84a31, type: 3}
+  inSelect: {fileID: 21300000, guid: 7d4c1d4ff63d04b49add76d561616e74, type: 3}
 --- !u!212 &2115118133
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5600,6 +5629,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 1008545959}
   fault: {fileID: 61182444}
+  spr: {fileID: 0}
+  unSelect: {fileID: 21300000, guid: 815982cc25595c544a7124a07fc84a31, type: 3}
+  inSelect: {fileID: 21300000, guid: 7d4c1d4ff63d04b49add76d561616e74, type: 3}
 --- !u!212 &2116911371
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5658,10 +5690,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 2053816057}
   - {fileID: 1110907502}
+  - {fileID: 810361603}
   - {fileID: 96750053}
   - {fileID: 1950939639}
   - {fileID: 472692913}
   - {fileID: 977895362}
   - {fileID: 1032206180}
   - {fileID: 477466390}
-  - {fileID: 810361603}

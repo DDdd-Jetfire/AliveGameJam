@@ -995,6 +995,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   rayDistance: 2
+  maxRayCD: 0.1
 --- !u!4 &1796211890
 Transform:
   m_ObjectHideFlags: 0
