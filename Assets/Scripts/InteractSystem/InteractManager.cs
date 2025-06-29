@@ -17,12 +17,16 @@ public class InteractManager : MonoBehaviour
     [Header("Interact Settings")]
     public LayerMask interactableLayer; // 可交互物体层级
     private  float rayDistance = 0.2f; // 射线检测距离
+    public Sprite normalState;
+    public Sprite selectState;
+    public Sprite waitState;
     private enum CursorState
     {
         normal,
         select,
         waiting
     }
+    private SpriteRenderer cursorSpr;
 
     private bool canInteract = true;
 
@@ -45,7 +49,7 @@ public class InteractManager : MonoBehaviour
     void Start()
     {
         Cursor.visible = false;
-
+        cursorSpr = gameObject.GetComponentInChildren<SpriteRenderer>();
     }
 
     void Update()
@@ -65,6 +69,7 @@ public class InteractManager : MonoBehaviour
 
         if(currentState == CursorState.waiting)
         {
+            cursorSpr.sprite = waitState;
             return;
         }
         else
@@ -138,12 +143,12 @@ public class InteractManager : MonoBehaviour
         // 处理射线命中的物体
         if (hit.collider != null)
         {
-            transform.localEulerAngles = new Vector3(0, 0, 90);
+            cursorSpr.sprite = selectState;
             currentState = CursorState.select;
         }
         else
         {
-            transform.localEulerAngles = new Vector3(0, 0, 0);
+            cursorSpr.sprite = normalState;
             currentState = CursorState.normal;
         }
     }

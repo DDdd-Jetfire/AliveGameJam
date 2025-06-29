@@ -30,6 +30,9 @@ public class RoomClipManager : MonoBehaviour
 
     public GameObject vc1st;
 
+    public GameObject tmpCanvas1st;
+    public GameObject tmpCanvas2st;
+
     void Start()
     {
         //GlobalEventManager.instance.RegisterEvent(receivedEventName, CheckAll);
@@ -41,20 +44,31 @@ public class RoomClipManager : MonoBehaviour
             roomSquareList.Add(r);
         }
         SetAs1st();
+        tmpCanvas1st.SetActive(true);
+        tmpCanvas2st.SetActive(false);
     }
     void CheckAll()
     {
         switch (rcs)
         {
             case roomClipState.sta1:
-
                 bool isAllSelect = true;
                 for (int i = 0; i < roomSquareList.Count; i++)
                 {
-                    if (isCorrectTarget1st[i] != roomSquareList[i].isSelect)
+                    if (isCorrectTarget1st[i])
                     {
-                        roomSquareList[i].SetFalse();
-                        isAllSelect = false;
+                        if (!roomSquareList[i].isSelect)
+                        {
+                            roomSquareList[i].SetFalse();
+                            isAllSelect = false;
+                        }
+                    }
+                    else
+                    {
+                        if (roomSquareList[i].isSelect)
+                        {
+                            roomSquareList[i].SetFalse();
+                        }
                     }
                 }
                 if (isAllSelect)
@@ -64,16 +78,26 @@ public class RoomClipManager : MonoBehaviour
                 break;
             case roomClipState.sta2:
 
-                bool isAllSelect2 = true;
+                //bool isAllSelect2 = true;
                 for (int i = 0; i < roomSquareList.Count; i++)
                 {
-                    if (isCorrectTarget2st[i] != roomSquareList[i].isSelect)
+                    if (isCorrectTarget2st[i])
                     {
-                        roomSquareList[i].SetFalse();
-                        isAllSelect2 = false;
+                        if (!roomSquareList[i].isSelect)
+                        {
+                            roomSquareList[i].SetFalse();
+                            //isAllSelect2 = false;
+                        }
+                    }
+                    else
+                    {
+                        if (roomSquareList[i].isSelect)
+                        {
+                            roomSquareList[i].SetFalse();
+                        }
                     }
                 }
-                if (isAllSelect2)
+                //if (isAllSelect2)
                 {
                     GlobalEventManager.instance.TriggerEvent(vc2stEnd);
                 }
@@ -83,15 +107,29 @@ public class RoomClipManager : MonoBehaviour
                 bool isAllSelect3 = true;
                 for (int i = 0; i < roomSquareList.Count; i++)
                 {
-                    if (isCorrectTarget3st[i] != roomSquareList[i].isSelect)
+                    if (isCorrectTarget3st[i])
                     {
-                        roomSquareList[i].SetFalse();
-                        isAllSelect3 = false;
+                        if (!roomSquareList[i].isSelect)
+                        {
+                            roomSquareList[i].SetFalse();
+                            //isAllSelect2 = false;
+                        }
+                    }
+                    else
+                    {
+                        if (roomSquareList[i].isSelect)
+                        {
+                            roomSquareList[i].SetFalse();
+                        }
                     }
                 }
                 if (isAllSelect3)
                 {
                     //GlobalEventManager.instance.TriggerEvent(finnishEventName);
+                    GameManager.instance.GoToNextScene(nextScene.name);
+                }
+                else
+                {
                     GameManager.instance.GoToNextScene(nextScene.name);
                 }
                 break;
@@ -103,6 +141,9 @@ public class RoomClipManager : MonoBehaviour
         ResetPuzzle();
         SetAs2st();
         rcs = roomClipState.sta2;
+
+        tmpCanvas1st.SetActive(false);
+        tmpCanvas2st.SetActive(true);
     }
     void OnVideo2stFinnished()
     {

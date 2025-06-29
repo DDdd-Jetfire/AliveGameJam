@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LemonClipManager : MonoBehaviour
+public class PicClipManager : MonoBehaviour
 {
-    public List<LemonSquare> lemonSquareList = new List<LemonSquare>();
+    public List<PicSquare> picSquareList = new List<PicSquare>();
     public List<bool> isCorrectTarget1st = new List<bool>();
 
 
@@ -13,31 +13,31 @@ public class LemonClipManager : MonoBehaviour
 
     void Start()
     {
-        LemonSquare[] lc = gameObject.transform.GetComponentsInChildren<LemonSquare>();
+        PicSquare[] lc = gameObject.transform.GetComponentsInChildren<PicSquare>();
         foreach (var l in lc)
         {
-            lemonSquareList.Add(l);
+            picSquareList.Add(l);
         }
         SetAs1st();
     }
     void CheckAll()
     {
-        bool isAllSelect = true;
-        for (int i = 0; i < lemonSquareList.Count; i++)
+        //bool isAllSelect = true;
+        for (int i = 0; i < picSquareList.Count; i++)
         {
             if (isCorrectTarget1st[i])
             {
-                if (!lemonSquareList[i].isSelect)
+                if (!picSquareList[i].isSelect)
                 {
-                    lemonSquareList[i].SetFalse();
+                    picSquareList[i].SetFalse();
                     //isAllSelect2 = false;
                 }
             }
             else
             {
-                if (lemonSquareList[i].isSelect)
+                if (picSquareList[i].isSelect)
                 {
-                    lemonSquareList[i].SetFalse();
+                    picSquareList[i].SetFalse();
                 }
             }
         }
@@ -56,11 +56,11 @@ public class LemonClipManager : MonoBehaviour
 
     private void SetAs1st()
     {
-        for (int i = 0; i < lemonSquareList.Count; i++)
+        for (int i = 0; i < picSquareList.Count; i++)
         {
             if (isCorrectTarget1st[i])
             {
-                lemonSquareList[i].isCorrectSquare = true;
+                picSquareList[i].isCorrectSquare = true;
             }
         }
     }
