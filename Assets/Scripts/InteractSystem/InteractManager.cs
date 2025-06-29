@@ -35,6 +35,8 @@ public class InteractManager : MonoBehaviour
     public float maxRayCD = 0.1f;
     private float rayCD = 0;
 
+    public AudioPlayer ap;
+
     private void Awake()
     {
         if (instance == null)
@@ -111,6 +113,11 @@ public class InteractManager : MonoBehaviour
             interactableLayer
         );
 
+        if (ap != null)
+        {
+            ap.PlaySoundEffects(0);
+        }
+
         // 调试绘制
         Debug.DrawRay(origin, Vector2.down * (hit ? hit.distance : rayDistance), Color.red, 1f);
 
@@ -142,7 +149,7 @@ public class InteractManager : MonoBehaviour
 
         // 处理射线命中的物体
         if (hit.collider != null)
-        {
+        {   
             cursorSpr.sprite = selectState;
             currentState = CursorState.select;
         }

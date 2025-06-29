@@ -41,12 +41,15 @@ public class AudioPlayer : MonoBehaviour
 
     void Start()
     {
-       
-            //Play(0);
-            //PlaySoundEffects(2);
-            //SetSoundEffectVolume(2, 0.01f);
-            //PlaySoundEffects(0);
-       
+
+        //Play(0);
+        //PlaySoundEffects(2);
+        //SetSoundEffectVolume(2, 0.01f);
+        //PlaySoundEffects(0);
+        if (playOnAwake)
+        {
+            Play(0);
+        }
     }
 
     private void InitializeAudioSource()
@@ -59,7 +62,7 @@ public class AudioPlayer : MonoBehaviour
 
     public void PlaySoundEffects(int clipIndex)
     {
-        Debug.Log($"play in {clipIndex}");
+        //Debug.Log($"play in {clipIndex}");
         if (soundEffectsclips == null || soundEffectsclips.Length == 0)
         {
             Debug.LogWarning("No audio clips assigned!");
