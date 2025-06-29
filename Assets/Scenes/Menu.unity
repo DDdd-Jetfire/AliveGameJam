@@ -360,7 +360,7 @@ MonoBehaviour:
   soundEffectsclips: []
   playOnAwake: 1
   loop: 1
-  volume: 1
+  volume: 0.072
   pitch: 1
 --- !u!82 &417223823
 AudioSource:

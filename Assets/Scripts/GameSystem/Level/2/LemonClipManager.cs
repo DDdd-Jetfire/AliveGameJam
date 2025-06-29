@@ -11,6 +11,7 @@ public class LemonClipManager : MonoBehaviour
     public string receivedEventName = "TriggerBikeButton";
     public UnityEditor.SceneAsset nextScene;
 
+    public AudioPlayer ap;
     void Start()
     {
         LemonSquare[] lc = gameObject.transform.GetComponentsInChildren<LemonSquare>();
@@ -41,10 +42,15 @@ public class LemonClipManager : MonoBehaviour
                 }
             }
         }
-        //if (isAllSelect)
-        //{
-        //    GameManager.instance.GoToNextScene(nextScene.name);
-        //}
+        if (isAllSelect)
+        {
+            GameManager.instance.GoToNextScene(nextScene.name);
+            ap.PlaySoundEffects(0);
+        }
+        else
+        {
+            ap.PlaySoundEffects(0);
+        }
         GameManager.instance.GoToNextScene(nextScene.name);
     }
 

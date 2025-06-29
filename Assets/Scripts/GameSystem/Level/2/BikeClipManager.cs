@@ -23,6 +23,8 @@ public class BikeClipManager : MonoBehaviour
     public string rideBikeEventName = "RideBike";
     public SceneAsset nextScene;
 
+    public AudioPlayer ap;
+
     void Start()
     {
         //GlobalEventManager.instance.RegisterEvent(receivedEventName, CheckAll);
@@ -61,7 +63,12 @@ public class BikeClipManager : MonoBehaviour
                 }
                 if (isAllSelect)
                 {
+                    ap.PlaySoundEffects(0);
                     GlobalEventManager.instance.TriggerEvent(rideBikeEventName);
+                }
+                else
+                {
+                    ap.PlaySoundEffects(1);
                 }
                 break;
             case BikeClipState.sta2:
@@ -89,11 +96,13 @@ public class BikeClipManager : MonoBehaviour
                 {
                     //GlobalEventManager.instance.TriggerEvent(finnishEventName);
                     GameManager.instance.UpdateHumanValue(70);
+                    ap.PlaySoundEffects(0);
                     GameManager.instance.GoToNextScene(nextScene.name);
                 }
                 else
                 {
                     GameManager.instance.UpdateHumanValue(0);
+                    ap.PlaySoundEffects(1);
                     GameManager.instance.GoToNextScene(nextScene.name);
                 }
                 break;

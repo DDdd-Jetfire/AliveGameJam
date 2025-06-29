@@ -33,6 +33,7 @@ public class RoomClipManager : MonoBehaviour
     public GameObject tmpCanvas1st;
     public GameObject tmpCanvas2st;
 
+    public AudioPlayer ap;
     void Start()
     {
         //GlobalEventManager.instance.RegisterEvent(receivedEventName, CheckAll);
@@ -74,11 +75,17 @@ public class RoomClipManager : MonoBehaviour
                 if (isAllSelect)
                 {
                     GlobalEventManager.instance.TriggerEvent(vc1stEnd);
+                    ap.PlaySoundEffects(0);
+                }
+                else
+                {
+
+                    ap.PlaySoundEffects(1);
                 }
                 break;
             case roomClipState.sta2:
 
-                //bool isAllSelect2 = true;
+                bool isAllSelect2 = true;
                 for (int i = 0; i < roomSquareList.Count; i++)
                 {
                     if (isCorrectTarget2st[i])
@@ -86,7 +93,7 @@ public class RoomClipManager : MonoBehaviour
                         if (!roomSquareList[i].isSelect)
                         {
                             roomSquareList[i].SetFalse();
-                            //isAllSelect2 = false;
+                            isAllSelect2 = false;
                         }
                     }
                     else
@@ -97,9 +104,15 @@ public class RoomClipManager : MonoBehaviour
                         }
                     }
                 }
-                //if (isAllSelect2)
+                if (isAllSelect2)
                 {
                     GlobalEventManager.instance.TriggerEvent(vc2stEnd);
+                    ap.PlaySoundEffects(1);
+                }
+                else
+                {
+
+                    ap.PlaySoundEffects(0);
                 }
                 break;
             case roomClipState.sta3:
@@ -127,10 +140,13 @@ public class RoomClipManager : MonoBehaviour
                 {
                     //GlobalEventManager.instance.TriggerEvent(finnishEventName);
                     GameManager.instance.GoToNextScene(nextScene.name);
+
+                    ap.PlaySoundEffects(0);
                 }
                 else
                 {
                     GameManager.instance.GoToNextScene(nextScene.name);
+                    ap.PlaySoundEffects(1);
                 }
                 break;
         }
