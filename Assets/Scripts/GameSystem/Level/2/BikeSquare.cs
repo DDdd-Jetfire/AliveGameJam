@@ -11,6 +11,10 @@ public class BikeSquare : InteractBase
     public GameObject fault;
 
 
+    public SpriteRenderer spr;
+    public Sprite unSelect;
+    public Sprite inSelect;
+
     private void Start()
     {
         if (correct == null || fault == null)
@@ -18,6 +22,7 @@ public class BikeSquare : InteractBase
             Debug.Log("missing object");
             return;
         }
+        spr = gameObject.GetComponent<SpriteRenderer>();
         correct.SetActive(false);
         fault.SetActive(false);
     }
@@ -29,6 +34,7 @@ public class BikeSquare : InteractBase
         if (isSelect)
         {
             correct.SetActive(true);
+            spr.sprite = inSelect;
             //if (isCorrectSquare)
             //{
             //    correct.SetActive(true);
@@ -40,6 +46,7 @@ public class BikeSquare : InteractBase
         }
         else
         {
+            spr.sprite = unSelect;
             correct.SetActive(false);
             fault.SetActive(false);
         }
@@ -56,6 +63,7 @@ public class BikeSquare : InteractBase
     public void ResetPuzzle()
     {
         isSelect = false;
+        spr.sprite = unSelect;
         isCorrectSquare = false;
         correct.SetActive(false);
         fault.SetActive(false);

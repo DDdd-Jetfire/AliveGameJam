@@ -19,11 +19,17 @@ public class InteractManager : MonoBehaviour
     public float rayDistance = 2f; // 射线检测距离
     private enum CursorState
     {
-        able,
-        disable,
+        normal,
+        select,
+        waiting
     }
 
-    private CursorState currentState = CursorState.able;
+    private bool canInteract = true;
+
+    private CursorState currentState = CursorState.normal;
+
+    public float maxRayCD = 0.1f;
+    private float rayCD = 0;
 
     private void Awake()
     {
@@ -44,15 +50,26 @@ public class InteractManager : MonoBehaviour
 
     void Update()
     {
+        Cursor.visible = false;
         hotspot = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if(currentState == CursorState.able)
+        if (rayCD < 0)
         {
-            cursor.transform.position = hotspot;
+            rayCD = maxRayCD;
+            DetectRay();
         }
         else
         {
+            rayCD -= Time.deltaTime;
+        }
+
+        if(currentState == CursorState.waiting)
+        {
             return;
+        }
+        else
+        {
+            cursor.transform.position = hotspot;
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -69,12 +86,12 @@ public class InteractManager : MonoBehaviour
 
     public void SetAble()
     {
-        currentState = CursorState.able;
+        canInteract = true;
     }
 
     public void SetDisable()
     {
-        currentState = CursorState.disable;
+        canInteract = false;
     }
 
     void ShootVerticalRay()
@@ -100,6 +117,34 @@ public class InteractManager : MonoBehaviour
             {
                 interactable.Click();
             }
+        }
+    }
+
+    void DetectRay()
+    {
+        Vector2 origin = cursor.transform.position;
+
+        // 发射射线
+        RaycastHit2D hit = Physics2D.Raycast(
+            origin,
+            Vector2.down,
+            rayDistance,
+            interactableLayer
+        );
+
+        // 调试绘制
+        Debug.DrawRay(origin, Vector2.down * (hit ? hit.distance : rayDistance), Color.red, 1f);
+
+        // 处理射线命中的物体
+        if (hit.collider != null)
+        {
+            transform.localEulerAngles = new Vector3(0, 0, 90);
+            currentState = CursorState.select;
+        }
+        else
+        {
+            transform.localEulerAngles = new Vector3(0, 0, 0);
+            currentState = CursorState.normal;
         }
     }
 }
