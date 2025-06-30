@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LemonClipManager : MonoBehaviour
 {
-    public List<LemonSquare> lemonSquareList = new List<LemonSquare>();
+    public List<PicSquare> lemonSquareList = new List<PicSquare>();
     public List<bool> isCorrectTarget1st = new List<bool>();
 
 
@@ -14,7 +14,7 @@ public class LemonClipManager : MonoBehaviour
     public AudioPlayer ap;
     void Start()
     {
-        LemonSquare[] lc = gameObject.transform.GetComponentsInChildren<LemonSquare>();
+        PicSquare[] lc = gameObject.transform.GetComponentsInChildren<PicSquare>();
         foreach (var l in lc)
         {
             lemonSquareList.Add(l);

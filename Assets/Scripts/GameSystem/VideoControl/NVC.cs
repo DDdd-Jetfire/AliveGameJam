@@ -22,8 +22,8 @@ public class NVC : MonoBehaviour
 
     void Start()
     {
-        EventSetting();
         nvp.Loop = isVideoLoop;
+        EventSetting();
     }
 
     private void EventSetting()
@@ -36,7 +36,8 @@ public class NVC : MonoBehaviour
         vp.started += OnVideoStart;
         vp.loopPointReached += OnVideoFinish;
         // 准备并播放视频
-        vp.Prepare();
+        //vp.Prepare();
+        nvp.Init();
         vp.prepareCompleted += OnVideoPrepared;
     }
 
@@ -54,6 +55,7 @@ public class NVC : MonoBehaviour
     private void OnVideoFinish(VideoPlayer source)
     {
         //videoFinishAction?.Invoke();
+        Debug.Log("videoFinishEventName");
         if (videoFinishEventName != "null")
         {
             Debug.Log($"trigger {videoFinishEventName}");
@@ -73,15 +75,26 @@ public class NVC : MonoBehaviour
     IEnumerator HandleFirstFrame()
     {
 
+        // 等待渲染开始
         // 等待一帧确保渲染
+        nvp.Play();
+        //while (vp.frame < 1)
+        //{
+        //    Debug.Log("waiting");
+        //}
         yield return null;
         SetVideoSpeed(playSpeed);
 
+        Debug.Log("waiting complete");
         // 自动播放
         if (autoPlayAfterLoad)
         {
             yield return new WaitForSeconds(0.1f); // 短暂延迟
             PlayVideo();
+        }
+        else
+        {
+            nvp.Pause();
         }
     }
 
@@ -120,5 +133,6 @@ public class NVC : MonoBehaviour
         GlobalEventManager.instance.UnregisterEvent(onTriggerEventName, PlayVideo);
         vp.started -= OnVideoStart;
         vp.loopPointReached -= OnVideoFinish;
+        vp.prepareCompleted -= OnVideoPrepared;
     }
 }

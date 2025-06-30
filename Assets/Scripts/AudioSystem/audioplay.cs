@@ -48,14 +48,14 @@ public class AudioPlayer : MonoBehaviour
         StartCoroutine(InitializeSoundEffectsAsync());
     }
 
-    private bool isInitializing = false;
+    //private bool isInitializing = false;
     // 异步初始化音效系统
     IEnumerator InitializeSoundEffectsAsync()
     {
         if (soundEffectsclips == null || soundEffectsclips.Length == 0)
             yield break;
 
-        isInitializing = true;
+        //isInitializing = true;
         soundEffects = new AudioSource[soundEffectsclips.Length];
 
         for (int i = 0; i < soundEffectsclips.Length; i++)
@@ -78,8 +78,8 @@ public class AudioPlayer : MonoBehaviour
             soundEffects[i].spatialBlend = 0; // 2D音效
         }
 
-        isInitializing = false;
-        Debug.Log($"异步初始化完成，共创建 {soundEffectsclips.Length} 个音效源");
+        //isInitializing = false;
+        //Debug.Log($"异步初始化完成，共创建 {soundEffectsclips.Length} 个音效源");
     }
 
     void Start()
@@ -155,7 +155,7 @@ public class AudioPlayer : MonoBehaviour
     {
         if (clips == null || clips.Length == 0)
         {
-            Debug.LogWarning("No audio clips assigned!");
+            //Debug.LogWarning("No audio clips assigned!");
             return;
         }
 

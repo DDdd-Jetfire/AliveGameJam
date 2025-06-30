@@ -29,7 +29,7 @@ public class EndInteractSystem : MonoBehaviour
     }
     private SpriteRenderer cursorSpr;
 
-    private bool canInteract = true;
+    //private bool canInteract = true;
 
     private CursorState currentState = CursorState.normal;
 
@@ -101,16 +101,16 @@ public class EndInteractSystem : MonoBehaviour
     }
 
 
-    public void SetAble()
-    {
-        canInteract = true;
-    }
-
-    public void SetDisable()
-    {
-        canInteract = false;
-    }
-
+    //public void SetAble()
+    //{
+    //    canInteract = true;
+    //}
+    //
+    //public void SetDisable()
+    //{
+    //    canInteract = false;
+    //}
+    //
     void ShootVerticalRay()
     {
         Vector2 origin = cursor.transform.position;

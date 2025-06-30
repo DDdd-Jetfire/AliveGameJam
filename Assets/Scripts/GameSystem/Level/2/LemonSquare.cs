@@ -10,7 +10,8 @@ public class LemonSquare : InteractBase
     public GameObject correct;
     public GameObject fault;
 
-    public VideoController vc;
+    //public VideoController vc;
+    public NVC nvc;
 
     public bool isPlayed = false;
 
@@ -41,7 +42,10 @@ public class LemonSquare : InteractBase
 
             if (!isPlayed)
             {
-                vc.PlayVideo();
+                if (nvc != null)
+                {
+                    nvc.PlayVideo();
+                }
                 isPlayed = true;
             }
             //if (isCorrectSquare)

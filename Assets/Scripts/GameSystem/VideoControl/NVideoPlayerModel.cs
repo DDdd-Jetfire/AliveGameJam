@@ -26,7 +26,7 @@ public class NVideoPlayerModel : MonoBehaviour
     [SerializeField]
     private Vector2 renderTextureSize;
     bool videoPrepared = false;
-    bool isVideoPlayEnd = false;
+    //bool isVideoPlayEnd = false;
 
     public double VideoLength
     {
@@ -84,24 +84,25 @@ public class NVideoPlayerModel : MonoBehaviour
     int cullMask;
     Canvas parent;
 
-    private void Awake()
+    private void Start()
     {
         videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
-        Init();
-        if (autoPlay)
-        {
-            AutoPlay();
-        }
-        else
-        {
-            Stop();
-        }
+        //Init();
+        //if (autoPlay)
+        //{
+        //    AutoPlay();
+        //}
+        //else
+        //{
+        //    Stop();
+        //}
     }
     /// <summary>
     /// 初始化
     /// </summary>
-    private void Init()
+    public void Init()
     {
+        Debug.Log("init");
         Loop = loop;
         parent = transform.GetComponentInParent<Canvas>();
         rectTransform = this.GetComponent<RectTransform>();
@@ -120,10 +121,19 @@ public class NVideoPlayerModel : MonoBehaviour
         rt.name = "VideoRenderTexture";
         rt.depthStencilFormat = UnityEngine.Experimental.Rendering.GraphicsFormat.D32_SFloat_S8_UInt;
 
-
         videoPlayer.targetTexture = rt;
         GetComponentInChildren<RawImage>().texture = rt;
         audioSource = videoPlayer.GetComponent<AudioSource>();
+
+        videoPlayer.Prepare();
+        //if (autoPlay)
+        //{
+        //    AutoPlay();
+        //}
+        //else
+        //{
+        //    Stop();
+        //}
     }
     /// <summary>
     /// 如果初始有视频资源，走正常流程播放
@@ -197,25 +207,29 @@ public class NVideoPlayerModel : MonoBehaviour
     /// </summary>
     public void VideoPlay()
     {
-        if (!videoPrepared)
-        {
-            videoPlayer.Prepare();
-            videoPlayer.prepareCompleted += (VideoPlayer video) =>
-            {
-                videoPrepared = true;
-                isVideoPlayEnd = false;
-                VideoPlay();
-            };
-            return;
-        }
+        Debug.Log("start play");
+        //if (!videoPrepared)
+        //{
+        //    videoPlayer.Prepare();
+        //    videoPlayer.prepareCompleted += (VideoPlayer video) =>
+        //    {
+        //        videoPrepared = true;
+        //        //isVideoPlayEnd = false;
+        //        VideoPlay();
+        //        Debug.Log("waitComplete");
+        //    };
+        //    return;
+        //}
+        //Debug.Log("play");
         videoPlayer.Play();
-        isVideoPlayEnd = false;
+        //isVideoPlayEnd = false;
     }
     /// <summary>
     /// 视频暂停
     /// </summary>
     public void Pause()
     {
+        Debug.Log("pause");
         videoPlayer.Pause();
     }
     /// <summary>
@@ -223,8 +237,9 @@ public class NVideoPlayerModel : MonoBehaviour
     /// </summary>
     public void Stop()
     {
+        Debug.Log("stop");
         videoPlayer.Stop();
-        isVideoPlayEnd = true;
+        //isVideoPlayEnd = true;
         PlayTime = 0f;
     }
     /// <summary>
@@ -256,26 +271,26 @@ public class NVideoPlayerModel : MonoBehaviour
     void VideoComplete(VideoPlayer video)
     {
         videoPrepared = true;
-        isVideoPlayEnd = false;
+        //isVideoPlayEnd = false;
         if (!autoPlay) return;
         VideoPlay();
     }
     /// <summary>
     /// 更新进度条和时间
     /// </summary>
-    private void FixedUpdate()
-    {
-        if (IsVideoPlaying)
-        {
-            if (VideoLength - PlayTime < 0.1f)
-            {
-                if (!Loop)
-                {
-                    Stop();
-                }
-            }
-        }
-    }
+    //private void FixedUpdate()
+    //{
+    //    if (IsVideoPlaying)
+    //    {
+    //        if (VideoLength - PlayTime < 0.1f)
+    //        {
+    //            if (!Loop)
+    //            {
+    //                Stop();
+    //            }
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// 手动调节进度，按下时暂停播放
@@ -289,7 +304,7 @@ public class NVideoPlayerModel : MonoBehaviour
     /// </summary>
     public void SliderPointerUp()
     {
-        isVideoPlayEnd = false;
+        //isVideoPlayEnd = false;
         VideoPlay();
     }
 
@@ -315,12 +330,18 @@ public class NVideoPlayerModel : MonoBehaviour
     //}
     private void OnDisable()
     {
-        rt.Release();
+        if (rt != null)
+        {
+            rt.Release();
+        }
         videoPlayer.prepareCompleted -= VideoComplete;
     }
     private void OnDestroy()
     {
-        rt.Release();
+        if (rt != null)
+        {
+            rt.Release();
+        }
         videoPlayer.prepareCompleted -= VideoComplete;
     }
     private static long unixBaseMillis = new DateTime(1970, 1, 1, 0, 0, 0).ToFileTimeUtc() / 10000;

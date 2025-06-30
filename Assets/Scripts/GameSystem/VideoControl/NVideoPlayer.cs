@@ -71,6 +71,11 @@ public class NVideoPlayer : MonoBehaviour
     {
         model = this.GetComponent<NVideoPlayerModel>();
     }
+
+    public void Init()
+    {
+        model.Init();
+    }
     /// <summary>
     /// øÿ÷∆ ”∆µ≤•∑≈
     /// </summary>

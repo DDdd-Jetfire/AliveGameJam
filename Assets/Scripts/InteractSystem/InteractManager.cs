@@ -28,7 +28,7 @@ public class InteractManager : MonoBehaviour
         }
     private SpriteRenderer cursorSpr;
 
-    private bool canInteract = true;
+    //private bool canInteract = true;
 
     private CursorState currentState = CursorState.normal;
 
@@ -89,15 +89,15 @@ public class InteractManager : MonoBehaviour
             }
         }
 
-    public void SetAble()
-        {
-        canInteract = true;
-        }
-
-    public void SetDisable()
-        {
-        canInteract = false;
-        }
+  //public void SetAble()
+  //    {
+  //    canInteract = true;
+  //    }
+  //
+  //public void SetDisable()
+  //    {
+  //    canInteract = false;
+  //    }
 
     void ShootVerticalRay()
         {
