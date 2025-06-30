@@ -9,7 +9,7 @@ public class PicClipManager : MonoBehaviour
 
 
     public string receivedEventName = "TriggerBikeButton";
-    public UnityEditor.SceneAsset nextScene;
+    public string nextScene;
 
     void Start()
     {
@@ -45,7 +45,7 @@ public class PicClipManager : MonoBehaviour
         //{
         //    GameManager.instance.GoToNextScene(nextScene.name);
         //}
-        GameManager.instance.GoToNextScene(nextScene.name);
+        GameManager.instance.GoToNextScene(nextScene);
     }
 
 

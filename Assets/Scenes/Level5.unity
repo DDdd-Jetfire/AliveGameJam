@@ -2023,7 +2023,7 @@ MonoBehaviour:
   lemonSquareList: []
   isCorrectTarget1st: 00000001
   receivedEventName: TriggerBikeButton
-  nextScene: {fileID: 102900000, guid: 0d648680706d7d84dbf526e10d9477ae, type: 3}
+  nextScene: EndGame
   ap: {fileID: 1082507378}
 --- !u!224 &1082507377
 RectTransform:

@@ -1,23 +1,16 @@
-ï»¿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-[RequireComponent(typeof(VideoPlayer))]
-public class VideoController : MonoBehaviour
+public class NVC : MonoBehaviour
 {
-    public VideoClip vc;
-    public string vcPath;
+    public NVideoPlayer nvp;
     public VideoPlayer vp;
 
-    private RenderTexture rt;
-    private MeshRenderer mr;
-    public Vector2 renderTextureSize = new Vector2(1920, 1080);
-    private RenderTextureFormat textureFormat = RenderTextureFormat.ARGB32;
-
     private bool isPrepareComplete = false;
-    public bool isPlaying = false;
+    public bool isPlaying = false;  
 
     public bool autoPlayAfterLoad = false;
     public bool isVideoLoop = true;
@@ -29,53 +22,22 @@ public class VideoController : MonoBehaviour
 
     void Start()
     {
-        Init();
         EventSetting();
-    }
-
-    private void Init()
-    {
-        vp = gameObject.GetComponent<VideoPlayer>();
-        mr = gameObject.GetComponent<MeshRenderer>();
-        vp.renderMode = VideoRenderMode.RenderTexture;
-        vp.isLooping = isVideoLoop;
-        //ConfigureVideoSource();
-        //vp.targetTexture = rt;
-
-        rt = new RenderTexture(
-            (int)renderTextureSize.x,
-            (int)renderTextureSize.y,
-            24,
-            textureFormat
-        );
-        rt.name = "VideoRenderTexture";
-        rt.depthStencilFormat =UnityEngine.Experimental.Rendering.GraphicsFormat.D32_SFloat_S8_UInt;
-
-        vp.playOnAwake = false; 
-        vp.clip = Resources.Load<VideoClip>($"Videos/{vcPath}");
-        Debug.Log($"Videos/{vcPath}");
-        vp.renderMode = VideoRenderMode.RenderTexture;
-        vp.targetTexture = rt;
-
-        // è®¾ç½®SpriteRendererçš„æè´¨
-        mr.material = new Material(Shader.Find("Unlit/Texture"));
-        mr.material.mainTexture = rt;
-
-        // å‡†å¤‡å¹¶æ’­æ”¾è§†é¢‘
-        vp.Prepare();
-        vp.prepareCompleted += OnVideoPrepared;
+        nvp.Loop = isVideoLoop;
     }
 
     private void EventSetting()
     {
         if (onTriggerEventName != "null")
         {
-            GlobalEventManager.instance.RegisterEvent(onTriggerEventName,PlayVideo);
+            GlobalEventManager.instance.RegisterEvent(onTriggerEventName, PlayVideo);
         }
-
 
         vp.started += OnVideoStart;
         vp.loopPointReached += OnVideoFinish;
+        // ×¼±¸²¢²¥·ÅÊÓÆµ
+        vp.Prepare();
+        vp.prepareCompleted += OnVideoPrepared;
     }
 
     //public Action videoStartAction;
@@ -103,29 +65,22 @@ public class VideoController : MonoBehaviour
     {
         Debug.Log($"{gameObject.name} Prepare Complete!");
         isPrepareComplete = true;
-        // å¤„ç†ç¬¬ä¸€å¸§
+        // ´¦ÀíµÚÒ»Ö¡
         StartCoroutine(HandleFirstFrame());
         //vp.Play();
     }
 
     IEnumerator HandleFirstFrame()
     {
-        // è®¾ç½®åˆ°ç¬¬ä¸€å¸§
-        vp.frame = 0;
 
-        // æ¸²æŸ“ç¬¬ä¸€å¸§
-        vp.Play();
-        vp.StepForward();
-        vp.Pause();
-
-        // ç­‰å¾…ä¸€å¸§ç¡®ä¿æ¸²æŸ“
+        // µÈ´ıÒ»Ö¡È·±£äÖÈ¾
         yield return null;
         SetVideoSpeed(playSpeed);
 
-        // è‡ªåŠ¨æ’­æ”¾
+        // ×Ô¶¯²¥·Å
         if (autoPlayAfterLoad)
         {
-            yield return new WaitForSeconds(0.1f); // çŸ­æš‚å»¶è¿Ÿ
+            yield return new WaitForSeconds(0.1f); // ¶ÌÔİÑÓ³Ù
             PlayVideo();
         }
     }
@@ -133,18 +88,21 @@ public class VideoController : MonoBehaviour
     public void PlayVideo()
     {
         if (!isPrepareComplete) return;
-        vp.Play();
+        nvp.Play();
+        //vp.Play();
         isPlaying = true;
     }
     public void PauseVideo()
     {
         if (!isPrepareComplete) return;
-        vp.Pause();
+        //vp.Pause();
+        nvp.Pause();
         isPlaying = false;
     }
     public void StopVideo()
     {
-        vp.Stop();
+        nvp.Stop();
+        //vp.Stop();
         isPlaying = false;
     }
     public void SetVideoSpeed(float speed)
@@ -158,7 +116,7 @@ public class VideoController : MonoBehaviour
 
     private void OnDestroy()
     {
-        // æ³¨é”€äº‹ä»¶
+        // ×¢ÏúÊÂ¼ş
         GlobalEventManager.instance.UnregisterEvent(onTriggerEventName, PlayVideo);
         vp.started -= OnVideoStart;
         vp.loopPointReached -= OnVideoFinish;

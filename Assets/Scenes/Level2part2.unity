@@ -1835,7 +1835,7 @@ MonoBehaviour:
   onVideo2stEndName: Video2stFinnished
   vc1stEnd: 1stEnd
   vc2stEnd: 2stEnd
-  nextScene: {fileID: 102900000, guid: 46c5726f270f82d41b28f04b9ad51fb1, type: 3}
+  nextScene: Level2part3
   tmpMessage: {fileID: 0}
   vc1st: {fileID: 1427990423}
   tmpCanvas1st: {fileID: 454746319}

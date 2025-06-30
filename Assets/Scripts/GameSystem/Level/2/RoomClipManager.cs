@@ -25,7 +25,7 @@ public class RoomClipManager : MonoBehaviour
     //public string finnishEventName = "PuzzleFinnished";
     public string vc1stEnd = "1stEnd";
     public string vc2stEnd = "2stEnd";
-    public SceneAsset nextScene;
+    public string nextScene;
     public TextMeshProUGUI tmpMessage;
 
     public GameObject vc1st;
@@ -139,13 +139,13 @@ public class RoomClipManager : MonoBehaviour
                 if (isAllSelect3)
                 {
                     //GlobalEventManager.instance.TriggerEvent(finnishEventName);
-                    GameManager.instance.GoToNextScene(nextScene.name);
+                    GameManager.instance.GoToNextScene(nextScene);
 
                     ap.PlaySoundEffects(0);
                 }
                 else
                 {
-                    GameManager.instance.GoToNextScene(nextScene.name);
+                    GameManager.instance.GoToNextScene(nextScene);
                     ap.PlaySoundEffects(1);
                 }
                 break;

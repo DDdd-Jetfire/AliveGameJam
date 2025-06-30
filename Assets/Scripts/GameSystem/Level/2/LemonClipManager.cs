@@ -9,7 +9,7 @@ public class LemonClipManager : MonoBehaviour
 
 
     public string receivedEventName = "TriggerBikeButton";
-    public UnityEditor.SceneAsset nextScene;
+    public string nextScene;
 
     public AudioPlayer ap;
     void Start()
@@ -44,14 +44,14 @@ public class LemonClipManager : MonoBehaviour
         }
         if (isAllSelect)
         {
-            GameManager.instance.GoToNextScene(nextScene.name);
+            GameManager.instance.GoToNextScene(nextScene);
             ap.PlaySoundEffects(0);
         }
         else
         {
             ap.PlaySoundEffects(0);
         }
-        GameManager.instance.GoToNextScene(nextScene.name);
+        GameManager.instance.GoToNextScene(nextScene);
     }
 
 

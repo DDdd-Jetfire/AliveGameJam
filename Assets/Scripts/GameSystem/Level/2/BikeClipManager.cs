@@ -21,7 +21,7 @@ public class BikeClipManager : MonoBehaviour
     public string onVideoEventName = "VideoFinnished";
     public string finnishEventName = "PuzzleFinnished";
     public string rideBikeEventName = "RideBike";
-    public SceneAsset nextScene;
+    public string nextScene;
 
     public AudioPlayer ap;
 
@@ -97,13 +97,13 @@ public class BikeClipManager : MonoBehaviour
                     //GlobalEventManager.instance.TriggerEvent(finnishEventName);
                     GameManager.instance.UpdateHumanValue(70);
                     ap.PlaySoundEffects(0);
-                    GameManager.instance.GoToNextScene(nextScene.name);
+                    GameManager.instance.GoToNextScene(nextScene);
                 }
                 else
                 {
                     GameManager.instance.UpdateHumanValue(0);
                     ap.PlaySoundEffects(1);
-                    GameManager.instance.GoToNextScene(nextScene.name);
+                    GameManager.instance.GoToNextScene(nextScene);
                 }
                 break;
         }

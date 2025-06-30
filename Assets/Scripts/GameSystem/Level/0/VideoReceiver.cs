@@ -7,7 +7,7 @@ public class VideoReceiver : MonoBehaviour
 
     public string onVideoStartName;
     public string onVideoEndName;
-    public UnityEditor.SceneAsset nextScene;
+    public string nextScene;
 
     public AudioPlayer ap;
 
@@ -29,7 +29,7 @@ public class VideoReceiver : MonoBehaviour
 
     private void OnVideoFinnished()
     {
-        GameManager.instance.GoToNextScene(nextScene.name);
+        GameManager.instance.GoToNextScene(nextScene);
     }
 
 

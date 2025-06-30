@@ -1952,7 +1952,7 @@ MonoBehaviour:
   lemonSquareList: []
   isCorrectTarget1st: 000100000000010100
   receivedEventName: TriggerBikeButton
-  nextScene: {fileID: 102900000, guid: 785a3bc9e75036346830aad971d4c057, type: 3}
+  nextScene: Level2part4
   ap: {fileID: 599824384}
 --- !u!114 &599824384
 MonoBehaviour:

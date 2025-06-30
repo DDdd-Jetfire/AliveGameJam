@@ -978,7 +978,7 @@ MonoBehaviour:
   onVideoEventName: VideoFinnished
   finnishEventName: PuzzleFinnished
   rideBikeEventName: RideBike
-  nextScene: {fileID: 102900000, guid: f448023074e9c354194cd2be78cc3cfd, type: 3}
+  nextScene: Level2part2
   ap: {fileID: 599824384}
 --- !u!114 &599824384
 MonoBehaviour:
