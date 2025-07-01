@@ -11,6 +11,9 @@ public class PicClipManager : MonoBehaviour
     public string receivedEventName = "TriggerBikeButton";
     public string nextScene;
 
+    public AudioPlayer ap;
+
+    private bool levelState = true;
     void Start()
     {
         PicSquare[] lc = gameObject.transform.GetComponentsInChildren<PicSquare>();
@@ -22,7 +25,13 @@ public class PicClipManager : MonoBehaviour
     }
     void CheckAll()
     {
-        //bool isAllSelect = true;
+        if (!InteractManager.instance.canInteract)
+        {
+            return;
+        }
+
+        InteractManager.instance.SetDisable();
+        bool isAllSelect = true;
         for (int i = 0; i < picSquareList.Count; i++)
         {
             if (isCorrectTarget1st[i])
@@ -30,7 +39,7 @@ public class PicClipManager : MonoBehaviour
                 if (!picSquareList[i].isSelect)
                 {
                     picSquareList[i].SetFalse();
-                    //isAllSelect2 = false;
+                    isAllSelect = false;
                 }
             }
             else
@@ -41,13 +50,36 @@ public class PicClipManager : MonoBehaviour
                 }
             }
         }
-        //if (isAllSelect)
-        //{
-        //    GameManager.instance.GoToNextScene(nextScene.name);
-        //}
+        if (isAllSelect)
+        {
+            ap.PlaySoundEffects(0);
+            //GameManager.instance.GoToNextScene(nextScene.name);
+        }
+        else
+        {
+            LevelSetFault();
+            ap.PlaySoundEffects(1);
+        }
+        LevelCa();
         GameManager.instance.GoToNextScene(nextScene);
     }
 
+    private void LevelSetFault()
+    {
+        levelState = false;
+    }
+
+    private void LevelCa()
+    {
+        if (levelState)
+        {
+            GameManager.instance.AddHumanValue(25);
+        }
+        else
+        {
+            GameManager.instance.AddHumanValue(-10);
+        }
+    }
 
     public void NextButtonDown()
     {

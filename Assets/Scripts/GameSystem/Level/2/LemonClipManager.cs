@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class LemonClipManager : MonoBehaviour
 {
-    public List<PicSquare> lemonSquareList = new List<PicSquare>();
+    public List<LemonSquare> lemonSquareList = new List<LemonSquare>();
     public List<bool> isCorrectTarget1st = new List<bool>();
 
 
     public string receivedEventName = "TriggerBikeButton";
     public string nextScene;
 
+    private bool levelState = true; 
     public AudioPlayer ap;
     void Start()
     {
-        PicSquare[] lc = gameObject.transform.GetComponentsInChildren<PicSquare>();
+        LemonSquare[] lc = gameObject.transform.GetComponentsInChildren<LemonSquare>();
         foreach (var l in lc)
         {
             lemonSquareList.Add(l);
@@ -23,6 +24,12 @@ public class LemonClipManager : MonoBehaviour
     }
     void CheckAll()
     {
+        if (!InteractManager.instance.canInteract)
+        {
+            return;
+        }
+
+        InteractManager.instance.SetDisable();
         bool isAllSelect = true;
         for (int i = 0; i < lemonSquareList.Count; i++)
         {
@@ -31,7 +38,7 @@ public class LemonClipManager : MonoBehaviour
                 if (!lemonSquareList[i].isSelect)
                 {
                     lemonSquareList[i].SetFalse();
-                    //isAllSelect2 = false;
+                    isAllSelect = false;
                 }
             }
             else
@@ -44,14 +51,31 @@ public class LemonClipManager : MonoBehaviour
         }
         if (isAllSelect)
         {
-            GameManager.instance.GoToNextScene(nextScene);
             ap.PlaySoundEffects(0);
         }
         else
         {
-            ap.PlaySoundEffects(0);
+            LevelSetFault();
+            ap.PlaySoundEffects(1);
         }
+        LevelCa();
         GameManager.instance.GoToNextScene(nextScene);
+    }
+    private void LevelSetFault()
+    {
+        levelState = false;
+    }
+
+    private void LevelCa()
+    {
+        if (levelState)
+        {
+            GameManager.instance.AddHumanValue(25);
+        }
+        else
+        {
+            GameManager.instance.AddHumanValue(-10);
+        }
     }
 
 

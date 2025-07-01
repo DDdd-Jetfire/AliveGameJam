@@ -207,7 +207,7 @@ public class NVideoPlayerModel : MonoBehaviour
     /// </summary>
     public void VideoPlay()
     {
-        Debug.Log("start play");
+        //Debug.Log("start play");
         //if (!videoPrepared)
         //{
         //    videoPlayer.Prepare();
@@ -229,7 +229,7 @@ public class NVideoPlayerModel : MonoBehaviour
     /// </summary>
     public void Pause()
     {
-        Debug.Log("pause");
+        //Debug.Log("pause");
         videoPlayer.Pause();
     }
     /// <summary>

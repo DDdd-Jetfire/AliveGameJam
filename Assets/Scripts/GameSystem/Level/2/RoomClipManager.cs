@@ -34,6 +34,9 @@ public class RoomClipManager : MonoBehaviour
     public GameObject tmpCanvas2st;
 
     public AudioPlayer ap;
+
+    private bool levelState = true;
+
     void Start()
     {
         //GlobalEventManager.instance.RegisterEvent(receivedEventName, CheckAll);
@@ -50,9 +53,16 @@ public class RoomClipManager : MonoBehaviour
     }
     void CheckAll()
     {
+        if (!InteractManager.instance.canInteract)
+        {
+            return;
+        }
+
         switch (rcs)
         {
             case roomClipState.sta1:
+
+                InteractManager.instance.SetDisable();
                 bool isAllSelect = true;
                 for (int i = 0; i < roomSquareList.Count; i++)
                 {
@@ -79,12 +89,13 @@ public class RoomClipManager : MonoBehaviour
                 }
                 else
                 {
-
+                    InteractManager.instance.SetAble();
                     ap.PlaySoundEffects(1);
                 }
                 break;
             case roomClipState.sta2:
 
+                InteractManager.instance.SetDisable();
                 bool isAllSelect2 = true;
                 for (int i = 0; i < roomSquareList.Count; i++)
                 {
@@ -107,16 +118,18 @@ public class RoomClipManager : MonoBehaviour
                 if (isAllSelect2)
                 {
                     GlobalEventManager.instance.TriggerEvent(vc2stEnd);
-                    ap.PlaySoundEffects(1);
+                    ap.PlaySoundEffects(0);
                 }
                 else
-                {
-
-                    ap.PlaySoundEffects(0);
+                {       
+                    LevelSetFault();
+                    InteractManager.instance.SetAble();
+                    ap.PlaySoundEffects(1);
                 }
                 break;
             case roomClipState.sta3:
 
+                InteractManager.instance.SetDisable();
                 bool isAllSelect3 = true;
                 for (int i = 0; i < roomSquareList.Count; i++)
                 {
@@ -139,16 +152,34 @@ public class RoomClipManager : MonoBehaviour
                 if (isAllSelect3)
                 {
                     //GlobalEventManager.instance.TriggerEvent(finnishEventName);
-                    GameManager.instance.GoToNextScene(nextScene);
 
                     ap.PlaySoundEffects(0);
                 }
                 else
                 {
-                    GameManager.instance.GoToNextScene(nextScene);
+                    LevelSetFault();
                     ap.PlaySoundEffects(1);
                 }
+                LevelCa();
+                GameManager.instance.GoToNextScene(nextScene);
                 break;
+        }
+    }
+
+    private void LevelSetFault()
+    {
+        levelState = false;
+    }
+
+    private void LevelCa()
+    {
+        if (levelState)
+        {
+            GameManager.instance.AddHumanValue(25);
+        }
+        else
+        {
+            GameManager.instance.AddHumanValue(-10);
         }
     }
 
@@ -160,12 +191,14 @@ public class RoomClipManager : MonoBehaviour
 
         tmpCanvas1st.SetActive(false);
         tmpCanvas2st.SetActive(true);
+        InteractManager.instance.SetAble();
     }
     void OnVideo2stFinnished()
     {
         ResetPuzzle();
         SetAs3st();
         rcs = roomClipState.sta3;
+        InteractManager.instance.SetAble();
     }
 
 

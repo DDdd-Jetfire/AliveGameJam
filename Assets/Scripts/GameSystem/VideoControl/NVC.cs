@@ -77,12 +77,15 @@ public class NVC : MonoBehaviour
 
         // 等待渲染开始
         // 等待一帧确保渲染
+        yield return null;
         nvp.Play();
+        nvp.Pause();
+        vp.StepForward();
+        nvp.Pause();
         //while (vp.frame < 1)
         //{
         //    Debug.Log("waiting");
         //}
-        yield return null;
         SetVideoSpeed(playSpeed);
 
         Debug.Log("waiting complete");
@@ -122,7 +125,7 @@ public class NVC : MonoBehaviour
     {
         if (vp.canSetPlaybackSpeed)
         {
-            Debug.Log($"{gameObject.name} set play speed to {speed}");
+            //Debug.Log($"{gameObject.name} set play speed to {speed}");
             vp.playbackSpeed = speed;
         }
     }

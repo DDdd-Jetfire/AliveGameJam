@@ -26,7 +26,12 @@ public class CSlider : MonoBehaviour
     private void UpdateValue()
     {
         float tempValue = GameManager.instance.humanPoint;
-        sl.value = tempValue / 100;
+        //Debug.Log($"tempValue1 is {tempValue}");
+        tempValue /= 100;
+        if (tempValue < 0) tempValue = 0;
+        if (tempValue > 1) tempValue = 1;
+        //Debug.Log($"tempValue2 is {tempValue}");
+        sl.value = tempValue;
         tmp.text = $"<b>{Mathf.FloorToInt(sl.value * 100)}%</b>";
     }
 

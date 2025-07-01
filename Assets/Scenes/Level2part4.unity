@@ -2489,7 +2489,7 @@ MonoBehaviour:
   soundEffectsclips: []
   playOnAwake: 1
   loop: 1
-  volume: 1
+  volume: 0.2
   pitch: 1
 --- !u!82 &367773397
 AudioSource:
@@ -2910,7 +2910,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433395247}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: c7126e87f14e85e4491b3064961fe344, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 37fdcdcd7ccbf344290b54bd0df00adf, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -4709,8 +4709,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.14254548, y: 0.14275457, z: 0.90909094}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.137, y: 0.13628757, z: 0.8688484}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1775709177}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6899,8 +6899,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips: []
   soundEffectsclips:
-  - {fileID: 8300000, guid: d5592bdbe162d5443ba0691329eb8d90, type: 3}
-  - {fileID: 8300000, guid: 01fe9ff8b4422c94b84ff1d9c57d3768, type: 3}
+  - {fileID: 8300000, guid: 0cc1dbb1859288b40b5b162d80192618, type: 3}
+  - {fileID: 8300000, guid: b8f799e6d7aa2b54e85e89ba0897171a, type: 3}
   playOnAwake: 1
   loop: 0
   volume: 1
@@ -7712,6 +7712,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FinalCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4939742855384708575, guid: f91a5eb323e5d974eade8147cec91e2d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9bb73d7439e67c409ca83589f2241d1, type: 3}
     - target: {fileID: 7692739995899481391, guid: f91a5eb323e5d974eade8147cec91e2d, type: 3}
       propertyPath: m_Camera
       value: 
@@ -9598,7 +9602,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842447580}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 9a3c43ecaf020e542a686b30c243179b, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 396357661f0da7846b291b7bdb7268d4, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -10292,7 +10296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1950939636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10329,7 +10333,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b42f0d8203733439b865110896f808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originHumanPoint: 0
   humanPoint: 0
+  maxHumanPoint: 125
+  minHumanPoint: -25
 --- !u!4 &1950939639
 Transform:
   m_ObjectHideFlags: 0

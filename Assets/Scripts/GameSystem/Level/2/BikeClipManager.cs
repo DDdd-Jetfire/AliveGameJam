@@ -24,6 +24,7 @@ public class BikeClipManager : MonoBehaviour
     public string nextScene;
 
     public AudioPlayer ap;
+    private bool levelState = true;
 
     void Start()
     {
@@ -38,10 +39,15 @@ public class BikeClipManager : MonoBehaviour
     }
     void CheckAll()
     {
+        if (!InteractManager.instance.canInteract)
+        {
+            return;
+        }
         switch (bcs)
         {
             case BikeClipState.sta1:
 
+                InteractManager.instance.SetDisable();
                 bool isAllSelect = true;
                 for (int i = 0; i < bikeSquareList.Count; i++)
                 {
@@ -68,11 +74,14 @@ public class BikeClipManager : MonoBehaviour
                 }
                 else
                 {
+                    LevelSetFault();
                     ap.PlaySoundEffects(1);
+                    InteractManager.instance.SetAble();
                 }
                 break;
             case BikeClipState.sta2:
 
+                InteractManager.instance.SetDisable();
                 bool isAllSelect2 = true;
                 for (int i = 0; i < bikeSquareList.Count; i++)
                 {
@@ -92,20 +101,38 @@ public class BikeClipManager : MonoBehaviour
                         }
                     }
                 }
+
                 if (isAllSelect2)
                 {
                     //GlobalEventManager.instance.TriggerEvent(finnishEventName);
-                    GameManager.instance.UpdateHumanValue(70);
                     ap.PlaySoundEffects(0);
-                    GameManager.instance.GoToNextScene(nextScene);
                 }
                 else
                 {
-                    GameManager.instance.UpdateHumanValue(0);
                     ap.PlaySoundEffects(1);
-                    GameManager.instance.GoToNextScene(nextScene);
+                    LevelSetFault();
+                    InteractManager.instance.SetAble();
                 }
+                LevelCa();
+                GameManager.instance.GoToNextScene(nextScene);
                 break;
+        }
+    }
+
+    private void LevelSetFault()
+    {
+        levelState = false;
+    }
+
+    private void LevelCa()
+    {
+        if(levelState)
+        {
+            GameManager.instance.AddHumanValue(25);
+        }
+        else
+        {
+            GameManager.instance.AddHumanValue(-10);
         }
     }
 
@@ -114,6 +141,7 @@ public class BikeClipManager : MonoBehaviour
         ResetPuzzle();
         SetAs2st();
         bcs = BikeClipState.sta2;
+        InteractManager.instance.SetAble();
     }
 
 

@@ -1165,8 +1165,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 599824383}
-        m_TargetAssemblyTypeName: LemonClipManager, Assembly-CSharp
+      - m_Target: {fileID: 599824386}
+        m_TargetAssemblyTypeName: PicClipManager, Assembly-CSharp
         m_MethodName: NextButtonDown
         m_Mode: 1
         m_Arguments:
@@ -1754,7 +1754,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 599824381}
-  - component: {fileID: 599824383}
+  - component: {fileID: 599824386}
   - component: {fileID: 599824382}
   - component: {fileID: 599824385}
   - component: {fileID: 599824384}
@@ -1812,23 +1812,6 @@ MonoBehaviour:
   m_Spacing: {x: 1.5, y: -0.8}
   m_Constraint: 1
   m_ConstraintCount: 2
---- !u!114 &599824383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 599824380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fecd7aa8f69cd0e48b61bf198d10142b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lemonSquareList: []
-  isCorrectTarget1st: 00000001
-  receivedEventName: TriggerBikeButton
-  nextScene: Level5
-  ap: {fileID: 599824384}
 --- !u!114 &599824384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1843,8 +1826,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clips: []
   soundEffectsclips:
-  - {fileID: 8300000, guid: d5592bdbe162d5443ba0691329eb8d90, type: 3}
-  - {fileID: 8300000, guid: 01fe9ff8b4422c94b84ff1d9c57d3768, type: 3}
+  - {fileID: 8300000, guid: 0cc1dbb1859288b40b5b162d80192618, type: 3}
+  - {fileID: 8300000, guid: b8f799e6d7aa2b54e85e89ba0897171a, type: 3}
   playOnAwake: 1
   loop: 0
   volume: 1
@@ -1945,6 +1928,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &599824386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599824380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4743bc10b3443684cb4f830140a2efc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  picSquareList: []
+  isCorrectTarget1st: 00000001
+  receivedEventName: null
+  nextScene: Level5
+  ap: {fileID: 599824384}
 --- !u!1 &763168274
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,6 +3566,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4939742855384708575, guid: f91a5eb323e5d974eade8147cec91e2d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 102a8114f7f9f1b4fbd7702210b8eec1, type: 3}
     - target: {fileID: 6674275896031111158, guid: f91a5eb323e5d974eade8147cec91e2d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4464,7 +4468,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1950939636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4501,7 +4505,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b42f0d8203733439b865110896f808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originHumanPoint: 0
   humanPoint: 0
+  maxHumanPoint: 125
+  minHumanPoint: -25
 --- !u!4 &1950939639
 Transform:
   m_ObjectHideFlags: 0

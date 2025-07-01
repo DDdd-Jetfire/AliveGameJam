@@ -1,31 +1,35 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractManager : MonoBehaviour
-    {
+{
 
     public static InteractManager instance;
 
     public GameObject cursor;
-    public Vector2 hotspot = Vector2.zero; // ¹â±êÎ»ÖÃ
+    public Vector2 hotspot = Vector2.zero; // å…‰æ ‡ä½ç½®
     public Vector2 currentDir = Vector2.zero;
     private Vector2 lastPos = Vector2.zero;
     [Header("Dir Settings")]
     public float minMoveDistance = 0.1f;
 
     [Header("Interact Settings")]
-    public LayerMask interactableLayer; // ¿É½»»¥ÎïÌå²ã¼¶
-    private float rayDistance = 0.2f; // ÉäÏß¼ì²â¾àÀë
+    public LayerMask interactableLayer; // å¯äº¤äº’ç‰©ä½“å±‚çº§
+    private float rayDistance = 0.2f; // å°„çº¿æ£€æµ‹è·ç¦»
     public Sprite normalState;
     public Sprite selectState;
     public Sprite waitState;
+
+    public AudioPlayer ap;
+
+
     private enum CursorState
-        {
+    {
         normal,
         select,
         waiting
-        }
+    }
     private SpriteRenderer cursorSpr;
 
     //private bool canInteract = true;
@@ -35,75 +39,88 @@ public class InteractManager : MonoBehaviour
     public float maxRayCD = 0.1f;
     private float rayCD = 0;
 
+    public bool canInteract = true;
+
     private void Awake()
-        {
+    {
         if (instance == null)
-            {
-            instance = this;
-            }
-        else
-            {
-            Destroy(gameObject);
-            }
-        }
-    void Start()
         {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    void Start()
+    {
         Cursor.visible = false;
         cursorSpr = gameObject.GetComponentInChildren<SpriteRenderer>();
-        }
+    }
 
     void Update()
-        {
+    {
         Cursor.visible = false;
         hotspot = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        if (rayCD < 0)
-            {
-            rayCD = maxRayCD;
-            DetectRay();
-            }
-        else
-            {
-            rayCD -= Time.deltaTime;
-            }
+        
+        cursor.transform.position = hotspot;
 
         if (currentState == CursorState.waiting)
-            {
+        {
             cursorSpr.sprite = waitState;
+            //if (Input.GetKeyDown(KeyCode.Mouse0))
+            //{
+            //    if (ap != null)
+            //    {
+            //        ap.PlaySoundEffects(0);
+            //    }
+            //}
             return;
-            }
+        }
+
+        if (rayCD < 0)
+        {
+            rayCD = maxRayCD;
+            DetectRay();
+        }
         else
-            {
-            cursor.transform.position = hotspot;
-            }
+        {
+            rayCD -= Time.deltaTime;
+        }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
+        {
+            Debug.Log("Input.GetKeyDown(KeyCode.Mouse0)");
             ShootVerticalRay();
-            }
+        }
 
         if (Vector2.Distance(lastPos, hotspot) > minMoveDistance)
-            {
+        {
             currentDir = (hotspot - lastPos).normalized;
             lastPos = hotspot;
-            }
         }
+    }
 
-  //public void SetAble()
-  //    {
-  //    canInteract = true;
-  //    }
-  //
-  //public void SetDisable()
-  //    {
-  //    canInteract = false;
-  //    }
+    public void SetAble()
+    {
+        Debug.Log("setAble");
+        canInteract = true;
+        currentState = CursorState.normal;
+    }
+
+    public void SetDisable()
+    {
+        Debug.Log("setDisable");
+        Debug.Log("CursorState.waiting");
+        canInteract = false;
+        currentState = CursorState.waiting;
+    }
 
     void ShootVerticalRay()
-        {
+    {   
         Vector2 origin = cursor.transform.position;
 
-        // ·¢ÉäÉäÏß
+        // å‘å°„å°„çº¿
         RaycastHit2D hit = Physics2D.Raycast(
             origin,
             Vector2.down,
@@ -111,45 +128,50 @@ public class InteractManager : MonoBehaviour
             interactableLayer
         );
 
-        // µ÷ÊÔ»æÖÆ
+        // è°ƒè¯•ç»˜åˆ¶
         Debug.DrawRay(origin, Vector2.down * (hit ? hit.distance : rayDistance), Color.red, 1f);
 
-        // ´¦ÀíÉäÏßÃüÖĞµÄÎïÌå
-        if (hit.collider != null)
-            {
-            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
-            if (interactable != null)
-                {
-                interactable.Click();
-                }
-            }
+        if (ap != null)
+        {
+            ap.PlaySoundEffects(0);
         }
 
-    void DetectRay()
-        {
-        Vector2 origin = cursor.transform.position;
-
-        // ·¢ÉäÉäÏß
-        RaycastHit2D hit = Physics2D.Raycast(
-            origin,
-            Vector2.down,
-            rayDistance,
-            interactableLayer
-        );
-
-        // µ÷ÊÔ»æÖÆ
-        Debug.DrawRay(origin, Vector2.down * (hit ? hit.distance : rayDistance), Color.red, 1f);
-
-        // ´¦ÀíÉäÏßÃüÖĞµÄÎïÌå
+        // å¤„ç†å°„çº¿å‘½ä¸­çš„ç‰©ä½“
         if (hit.collider != null)
+        {
+            IInteractable interactable = hit.collider.GetComponent<IInteractable>();
+            if (interactable != null)
             {
-            cursorSpr.sprite = selectState;
-            currentState = CursorState.select;
-            }
-        else
-            {
-            cursorSpr.sprite = normalState;
-            currentState = CursorState.normal;
+                interactable.Click();
             }
         }
     }
+
+    void DetectRay()
+    {
+        Vector2 origin = cursor.transform.position;
+
+        // å‘å°„å°„çº¿
+        RaycastHit2D hit = Physics2D.Raycast(
+            origin,
+            Vector2.down,
+            rayDistance,
+            interactableLayer
+        );
+
+        // è°ƒè¯•ç»˜åˆ¶
+        Debug.DrawRay(origin, Vector2.down * (hit ? hit.distance : rayDistance), Color.red, 1f);
+
+        // å¤„ç†å°„çº¿å‘½ä¸­çš„ç‰©ä½“
+        if (hit.collider != null)
+        {
+            cursorSpr.sprite = selectState;
+            currentState = CursorState.select;
+        }
+        else
+        {
+            cursorSpr.sprite = normalState;
+            currentState = CursorState.normal;
+        }
+    }
+}
