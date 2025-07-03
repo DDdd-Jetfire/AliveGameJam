@@ -6,7 +6,7 @@ using UnityEngine;
 public class AudioPlayer : MonoBehaviour
 {
     [Header("Audio Settings")]
-    [SerializeField] private AudioClip[] clips;
+    public AudioClip[] clips;
     [SerializeField] private AudioClip[] soundEffectsclips;
     [SerializeField] private bool playOnAwake = true;
     [SerializeField] private bool loop = false;

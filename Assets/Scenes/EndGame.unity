@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b42f0d8203733439b865110896f808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originHumanPoint: 0
   humanPoint: 27.4
   maxHumanPoint: 125
   minHumanPoint: -25
@@ -491,6 +492,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bf52ad3f0eff0e40a1b36a9754cee05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &924255920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 924255922}
+  - component: {fileID: 924255921}
+  m_Layer: 0
+  m_Name: MusicSetter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &924255921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924255920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a970bce6823863418377f0356244f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioInfo: {fileID: 11400000, guid: d0c03459db044a942a309b65f0c514b0, type: 2}
+  newVolume: -1
+--- !u!4 &924255922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924255920}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1067295048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -916,7 +963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1569658152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4093,10 +4140,11 @@ SceneRoots:
   m_Roots:
   - {fileID: 1067295048}
   - {fileID: 4122310176227777879}
-  - {fileID: 1569658154}
   - {fileID: 653316038}
   - {fileID: 1989743183}
   - {fileID: 1536360011}
   - {fileID: 1214391208}
   - {fileID: 152883322}
   - {fileID: 2703392792355524328}
+  - {fileID: 1569658154}
+  - {fileID: 924255922}
