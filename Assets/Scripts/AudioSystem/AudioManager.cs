@@ -34,7 +34,15 @@ public class AudioManager : MonoBehaviour
 
     public void TransMusicTo(AudioInfo ai,float newVolume = -1)
     {
-        if(currentMusicName == ai.audioClip.name)
+        if (newVolume != -1)
+        {
+            ap.SetVolume(newVolume);
+        }
+        else
+        {
+            ap.SetVolume(ai.volume);
+        }
+        if (currentMusicName == ai.audioClip.name)
         {
             return;
         }
@@ -44,14 +52,6 @@ public class AudioManager : MonoBehaviour
             {
                 ap.AddClip(audioInfoList[i].audioClip);
                 ap.Play(i);
-                if (newVolume != -1)
-                {
-                    ap.SetVolume(newVolume);
-                }
-                else
-                {
-                    ap.SetVolume(ai.volume);
-                }
                 return;
             }
         }
