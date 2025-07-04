@@ -796,7 +796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u732B"
+  m_text: "\u624B\u67C4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0c74d0b26a78ee44890366fdc25f7a0, type: 2}
   m_sharedMaterial: {fileID: 7750008064738235618, guid: b0c74d0b26a78ee44890366fdc25f7a0, type: 2}
@@ -823,8 +823,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -934,7 +934,6 @@ GameObject:
   - component: {fileID: 455791097}
   - component: {fileID: 455791096}
   - component: {fileID: 455791093}
-  - component: {fileID: 455791098}
   m_Layer: 0
   m_Name: picSquare (3)
   m_TagString: Untagged
@@ -983,9 +982,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 1700495504}
   fault: {fileID: 1082610746}
-  spr: {fileID: 455791097}
-  unSelect: {fileID: 21300000, guid: f45d4532b948ca843bbbccc592744b80, type: 3}
-  inSelect: {fileID: 21300000, guid: 1fe9ec9fa0fb004428a4ebd18754b699, type: 3}
+  spr: {fileID: 0}
+  unSelect: {fileID: 0}
+  inSelect: {fileID: 0}
   ap: {fileID: 0}
 --- !u!61 &455791096
 BoxCollider2D:
@@ -1084,26 +1083,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &455791098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455791091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806eb48ccabfc3942b3f0ffa9695d081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  highlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  pressedColor: {r: 1, g: 1, b: 1, a: 1}
-  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  interactable: 1
-  onClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &633833852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1786,7 +1765,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u7530\u91CE"
+  m_text: "\u9E2D\u5B50"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0c74d0b26a78ee44890366fdc25f7a0, type: 2}
   m_sharedMaterial: {fileID: 7750008064738235618, guid: b0c74d0b26a78ee44890366fdc25f7a0, type: 2}
@@ -1813,8 +1792,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2194,7 +2173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lemonSquareList: []
-  isCorrectTarget1st: 01010101
+  isCorrectTarget1st: 00000001
   receivedEventName: TriggerBikeButton
   nextScene: EndGame
   ap: {fileID: 1082507378}
@@ -2437,7 +2416,6 @@ GameObject:
   - component: {fileID: 1087078724}
   - component: {fileID: 1087078723}
   - component: {fileID: 1087078720}
-  - component: {fileID: 1087078725}
   m_Layer: 0
   m_Name: picSquare
   m_TagString: Untagged
@@ -2486,9 +2464,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 641778166}
   fault: {fileID: 655500900}
-  spr: {fileID: 1087078724}
-  unSelect: {fileID: 21300000, guid: f45d4532b948ca843bbbccc592744b80, type: 3}
-  inSelect: {fileID: 21300000, guid: 1fe9ec9fa0fb004428a4ebd18754b699, type: 3}
+  spr: {fileID: 0}
+  unSelect: {fileID: 0}
+  inSelect: {fileID: 0}
   ap: {fileID: 0}
 --- !u!61 &1087078723
 BoxCollider2D:
@@ -2587,26 +2565,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1087078725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087078718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806eb48ccabfc3942b3f0ffa9695d081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  highlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  pressedColor: {r: 1, g: 1, b: 1, a: 1}
-  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  interactable: 1
-  onClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1233014525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2658,10 +2616,6 @@ PrefabInstance:
     - target: {fileID: 6437819157406607412, guid: d9fc4c4d8aee03b41b17dec5bbf4958a, type: 3}
       propertyPath: m_Name
       value: MaskVideo
-      objectReference: {fileID: 0}
-    - target: {fileID: 6437819157406607412, guid: d9fc4c4d8aee03b41b17dec5bbf4958a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2952,7 +2906,6 @@ GameObject:
   - component: {fileID: 1370488050}
   - component: {fileID: 1370488049}
   - component: {fileID: 1370488046}
-  - component: {fileID: 1370488051}
   m_Layer: 0
   m_Name: picSquare (2)
   m_TagString: Untagged
@@ -3001,9 +2954,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 1323458291}
   fault: {fileID: 1477452694}
-  spr: {fileID: 1370488050}
-  unSelect: {fileID: 21300000, guid: f45d4532b948ca843bbbccc592744b80, type: 3}
-  inSelect: {fileID: 21300000, guid: 1fe9ec9fa0fb004428a4ebd18754b699, type: 3}
+  spr: {fileID: 0}
+  unSelect: {fileID: 0}
+  inSelect: {fileID: 0}
   ap: {fileID: 0}
 --- !u!61 &1370488049
 BoxCollider2D:
@@ -3102,26 +3055,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1370488051
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370488044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806eb48ccabfc3942b3f0ffa9695d081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  highlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  pressedColor: {r: 1, g: 1, b: 1, a: 1}
-  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  interactable: 1
-  onClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1412676598
 GameObject:
   m_ObjectHideFlags: 0
@@ -3560,6 +3493,90 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e278a395ab511c458734dab4cc5bcfc, type: 3}
+--- !u!1 &1567826880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1567826882}
+  - component: {fileID: 1567826881}
+  m_Layer: 0
+  m_Name: "\u5C4F\u5E55\u622A\u56FE 2025-06-29 151030"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1567826881
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567826880}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: fe5a2cac8b7542643bb183c95744123b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.33, y: 2.55}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1567826882
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567826880}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.292233, y: -0.20897436, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1573528160 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4068033944194895491, guid: 072b3ac3189a6884c807b938da978269, type: 3}
@@ -3623,7 +3640,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: WindowsXP
+  m_text: "\u5DE5\u4F5C\u4EBA\u5458"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0c74d0b26a78ee44890366fdc25f7a0, type: 2}
   m_sharedMaterial: {fileID: 7750008064738235618, guid: b0c74d0b26a78ee44890366fdc25f7a0, type: 2}
@@ -3650,8 +3667,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4113,7 +4130,6 @@ GameObject:
   - component: {fileID: 2008717333}
   - component: {fileID: 2008717332}
   - component: {fileID: 2008717329}
-  - component: {fileID: 2008717334}
   m_Layer: 0
   m_Name: picSquare (1)
   m_TagString: Untagged
@@ -4162,9 +4178,9 @@ MonoBehaviour:
   isSelect: 0
   correct: {fileID: 45315302}
   fault: {fileID: 1412676598}
-  spr: {fileID: 2008717333}
-  unSelect: {fileID: 21300000, guid: f45d4532b948ca843bbbccc592744b80, type: 3}
-  inSelect: {fileID: 21300000, guid: 1fe9ec9fa0fb004428a4ebd18754b699, type: 3}
+  spr: {fileID: 0}
+  unSelect: {fileID: 0}
+  inSelect: {fileID: 0}
   ap: {fileID: 0}
 --- !u!61 &2008717332
 BoxCollider2D:
@@ -4263,26 +4279,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2008717334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2008717327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806eb48ccabfc3942b3f0ffa9695d081, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  highlightedColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  pressedColor: {r: 1, g: 1, b: 1, a: 1}
-  disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  interactable: 1
-  onClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2014780521
 GameObject:
   m_ObjectHideFlags: 0
@@ -4415,7 +4411,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"\u5E78\u798F\""
+  m_text: "\u5973\u751F\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b0c74d0b26a78ee44890366fdc25f7a0, type: 2}
   m_sharedMaterial: {fileID: 7750008064738235618, guid: b0c74d0b26a78ee44890366fdc25f7a0, type: 2}
@@ -4442,8 +4438,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4604,7 +4600,7 @@ PrefabInstance:
     - target: {fileID: 7638327675101862573, guid: 99f4717c5bf243f4caad0a5433ec935e, type: 3}
       propertyPath: backgroundTexture
       value: 
-      objectReference: {fileID: 2800000, guid: 5a73f007d15607a4da08313aa8012b1d, type: 3}
+      objectReference: {fileID: 2800000, guid: fe5a2cac8b7542643bb183c95744123b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4875,6 +4871,7 @@ SceneRoots:
   - {fileID: 1485591078}
   - {fileID: 1335710881}
   - {fileID: 1082507377}
+  - {fileID: 1567826882}
   - {fileID: 1565976668}
   - {fileID: 2014780525}
   - {fileID: 670837337}
