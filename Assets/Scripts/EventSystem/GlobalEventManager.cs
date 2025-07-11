@@ -21,7 +21,7 @@ public class GlobalEventManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // ×¢²áÊÂ¼ş
+    // æ³¨å†Œäº‹ä»¶
     public void RegisterEvent(string eventName, Action handler)
     {
         if (_events.ContainsKey(eventName))
@@ -34,7 +34,7 @@ public class GlobalEventManager : MonoBehaviour
         }
     }
 
-    // ×¢ÏúÊÂ¼ş
+    // æ³¨é”€äº‹ä»¶
     public void UnregisterEvent(string eventName, Action handler)
     {
         if (_events.TryGetValue(eventName, out Action existingEvent))
@@ -52,7 +52,7 @@ public class GlobalEventManager : MonoBehaviour
         }
     }
 
-    // ´¥·¢ÊÂ¼ş
+    // è§¦å‘äº‹ä»¶
     public void TriggerEvent(string eventName)
     {
         if (_events.TryGetValue(eventName, out Action thisEvent))
@@ -61,13 +61,13 @@ public class GlobalEventManager : MonoBehaviour
         }
     }
 
-    // Çå³ıËùÓĞÊÂ¼ş
+    // æ¸…é™¤æ‰€æœ‰äº‹ä»¶
     public void ClearAllEvents()
     {
         _events.Clear();
     }
 
-    // Çå³ıÖ¸¶¨ÊÂ¼ş
+    // æ¸…é™¤æŒ‡å®šäº‹ä»¶
     public void ClearEvent(string eventName)
     {
         if (_events.ContainsKey(eventName))
