@@ -90,7 +90,7 @@ public class InteractManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("Input.GetKeyDown(KeyCode.Mouse0)");
+            //Debug.Log("Input.GetKeyDown(KeyCode.Mouse0)");
             ShootVerticalRay();
         }
 

@@ -2349,7 +2349,7 @@ MonoBehaviour:
   isCorrectTarget1st: 000000010101010101
   nextScene: Level2part3
   ap: {fileID: 599824384}
-  roomSquareList: []
+  levelChangeParameter: 1
   isCorrectTarget2st: 000000000000010000
   isCorrectTarget3st: 000000000000000000
   rcs: 0

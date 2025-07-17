@@ -13,7 +13,9 @@ public class ClipManager : MonoBehaviour
     public string nextScene;
 
     public AudioPlayer ap;
+
     protected bool levelState = true;
+    private float levelChangeParameter = 0.25f;
 
     protected virtual void Start()
     {
@@ -32,13 +34,16 @@ public class ClipManager : MonoBehaviour
 
     protected virtual void LevelCa()
     {
+        float changedValue = 0;
+        changedValue = levelChangeParameter * 100 * (1 - Mathf.Abs(GameManager.instance.humanPoint * 0.01f - 0.5f) / 0.5f);
+        Debug.Log($"changedValue:{changedValue}");
         if (levelState)
         {
-            GameManager.instance.AddHumanValue(25);
+            GameManager.instance.AddHumanValue(changedValue);
         }
         else
         {
-            GameManager.instance.AddHumanValue(-10);
+            GameManager.instance.AddHumanValue(changedValue* -1);
         }
     }
 
