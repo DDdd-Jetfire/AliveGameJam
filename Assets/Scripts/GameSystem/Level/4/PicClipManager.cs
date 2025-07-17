@@ -2,28 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PicClipManager : MonoBehaviour
+public class PicClipManager : ClipManager
 {
-    public List<PicSquare> picSquareList = new List<PicSquare>();
-    public List<bool> isCorrectTarget1st = new List<bool>();
-
 
     public string receivedEventName = "TriggerBikeButton";
-    public string nextScene;
-
-    public AudioPlayer ap;
-
-    private bool levelState = true;
-    void Start()
+    protected override void Start()
     {
         PicSquare[] lc = gameObject.transform.GetComponentsInChildren<PicSquare>();
         foreach (var l in lc)
         {
-            picSquareList.Add(l);
+            SquareList.Add(l);
         }
         SetAs1st();
     }
-    void CheckAll()
+    protected override void CheckAll()
     {
         if (!InteractManager.instance.canInteract)
         {
@@ -32,21 +24,21 @@ public class PicClipManager : MonoBehaviour
 
         InteractManager.instance.SetDisable();
         bool isAllSelect = true;
-        for (int i = 0; i < picSquareList.Count; i++)
+        for (int i = 0; i < SquareList.Count; i++)
         {
             if (isCorrectTarget1st[i])
             {
-                if (!picSquareList[i].isSelect)
+                if (!SquareList[i].isSelect)
                 {
-                    picSquareList[i].SetFalse();
+                    SquareList[i].SetFalse();
                     isAllSelect = false;
                 }
             }
             else
             {
-                if (picSquareList[i].isSelect)
+                if (SquareList[i].isSelect)
                 {
-                    picSquareList[i].SetFalse();
+                    SquareList[i].SetFalse();
                 }
             }
         }
@@ -64,12 +56,7 @@ public class PicClipManager : MonoBehaviour
         GameManager.instance.GoToNextScene(nextScene);
     }
 
-    private void LevelSetFault()
-    {
-        levelState = false;
-    }
-
-    private void LevelCa()
+    protected override void LevelCa()
     {
         if (levelState)
         {
@@ -81,24 +68,9 @@ public class PicClipManager : MonoBehaviour
         }
     }
 
-    public void NextButtonDown()
-    {
-        CheckAll();
-    }
-
-    private void SetAs1st()
-    {
-        for (int i = 0; i < picSquareList.Count; i++)
-        {
-            if (isCorrectTarget1st[i])
-            {
-                picSquareList[i].isCorrectSquare = true;
-            }
-        }
-    }
 
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         //GlobalEventManager.instance.UnregisterEvent(receivedEventName, CheckAll);
         //GlobalEventManager.instance.UnregisterEvent(onVideoEventName, OnVideoFinnished);

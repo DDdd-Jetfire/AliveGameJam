@@ -4101,7 +4101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a970bce6823863418377f0356244f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioInfo: {fileID: 11400000, guid: 61dc2462977330b479106dd965bc8154, type: 2}
+  audioInfo: {fileID: 11400000, guid: d4235a307616b86438ef431df6020cea, type: 2}
   newVolume: -1
 --- !u!4 &1980501023
 Transform:

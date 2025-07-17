@@ -2,27 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LemonClipManager : MonoBehaviour
+public class LemonClipManager : ClipManager
 {
-    public List<LemonSquare> lemonSquareList = new List<LemonSquare>();
-    public List<bool> isCorrectTarget1st = new List<bool>();
-
 
     public string receivedEventName = "TriggerBikeButton";
-    public string nextScene;
 
-    private bool levelState = true; 
-    public AudioPlayer ap;
-    void Start()
+    protected override void Start()
     {
         LemonSquare[] lc = gameObject.transform.GetComponentsInChildren<LemonSquare>();
         foreach (var l in lc)
         {
-            lemonSquareList.Add(l);
+            SquareList.Add(l);
         }
         SetAs1st();
     }
-    void CheckAll()
+
+    protected override void CheckAll()
     {
         if (!InteractManager.instance.canInteract)
         {
@@ -31,21 +26,21 @@ public class LemonClipManager : MonoBehaviour
 
         InteractManager.instance.SetDisable();
         bool isAllSelect = true;
-        for (int i = 0; i < lemonSquareList.Count; i++)
+        for (int i = 0; i < SquareList.Count; i++)
         {
             if (isCorrectTarget1st[i])
             {
-                if (!lemonSquareList[i].isSelect)
+                if (!SquareList[i].isSelect)
                 {
-                    lemonSquareList[i].SetFalse();
+                    SquareList[i].SetFalse();
                     isAllSelect = false;
                 }
             }
             else
             {
-                if (lemonSquareList[i].isSelect)
+                if (SquareList[i].isSelect)
                 {
-                    lemonSquareList[i].SetFalse();
+                    SquareList[i].SetFalse();
                 }
             }
         }
@@ -61,42 +56,20 @@ public class LemonClipManager : MonoBehaviour
         LevelCa();
         GameManager.instance.GoToNextScene(nextScene);
     }
-    private void LevelSetFault()
-    {
-        levelState = false;
-    }
 
-    private void LevelCa()
+    protected override void SetAs1st()
     {
-        if (levelState)
-        {
-            GameManager.instance.AddHumanValue(25);
-        }
-        else
-        {
-            GameManager.instance.AddHumanValue(-10);
-        }
-    }
-
-
-    public void NextButtonDown()
-    {
-        CheckAll();
-    }
-
-    private void SetAs1st()
-    {
-        for (int i = 0; i < lemonSquareList.Count; i++)
+        for (int i = 0; i < SquareList.Count; i++)
         {
             if (isCorrectTarget1st[i])
             {
-                lemonSquareList[i].isCorrectSquare = true;
+                SquareList[i].isCorrectSquare = true;
             }
         }
     }
 
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
         //GlobalEventManager.instance.UnregisterEvent(receivedEventName, CheckAll);
         //GlobalEventManager.instance.UnregisterEvent(onVideoEventName, OnVideoFinnished);

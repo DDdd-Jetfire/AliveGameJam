@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class BikeClipManager : MonoBehaviour
+public class BikeClipManager : ClipManager
 {
-    public List<BikeSquare> bikeSquareList = new List<BikeSquare>();
-
-    public List<bool> isCorrectTarget1st = new List<bool>();
     public List<bool> isCorrectTarget2st = new List<bool>();
+
+
+    public string receivedEventName = "TriggerBikeButton";
+    public string onVideoEventName = "VideoFinnished";
+    public string finnishEventName = "PuzzleFinnished";
+    public string rideBikeEventName = "RideBike";
 
     public enum BikeClipState
     {
@@ -17,27 +20,19 @@ public class BikeClipManager : MonoBehaviour
     }
     public BikeClipState bcs = BikeClipState.sta1;
 
-    public string receivedEventName = "TriggerBikeButton";
-    public string onVideoEventName = "VideoFinnished";
-    public string finnishEventName = "PuzzleFinnished";
-    public string rideBikeEventName = "RideBike";
-    public string nextScene;
-
-    public AudioPlayer ap;
-    private bool levelState = true;
-
-    void Start()
+    protected override void Start()
     {
         //GlobalEventManager.instance.RegisterEvent(receivedEventName, CheckAll);
         GlobalEventManager.instance.RegisterEvent(onVideoEventName, OnVideoFinnished);
         BikeSquare[] bs = gameObject.transform.GetComponentsInChildren<BikeSquare>();
-        foreach(var b in bs)
+        foreach (var b in bs)
         {
-            bikeSquareList.Add(b);
+            SquareList.Add(b);
         }
         SetAs1st();
     }
-    void CheckAll()
+
+    protected override void CheckAll()
     {
         if (!InteractManager.instance.canInteract)
         {
@@ -49,21 +44,21 @@ public class BikeClipManager : MonoBehaviour
 
                 InteractManager.instance.SetDisable();
                 bool isAllSelect = true;
-                for (int i = 0; i < bikeSquareList.Count; i++)
+                for (int i = 0; i < SquareList.Count; i++)
                 {
                     if (isCorrectTarget1st[i])
                     {
-                        if (!bikeSquareList[i].isSelect)
+                        if (!SquareList[i].isSelect)
                         {
-                            bikeSquareList[i].SetFalse();
+                            SquareList[i].SetFalse();
                             isAllSelect = false;
                         }
                     }
                     else
                     {
-                        if (bikeSquareList[i].isSelect)
+                        if (SquareList[i].isSelect)
                         {
-                            bikeSquareList[i].SetFalse();
+                            SquareList[i].SetFalse();
                         }
                     }
                 }
@@ -83,21 +78,21 @@ public class BikeClipManager : MonoBehaviour
 
                 InteractManager.instance.SetDisable();
                 bool isAllSelect2 = true;
-                for (int i = 0; i < bikeSquareList.Count; i++)
+                for (int i = 0; i < SquareList.Count; i++)
                 {
                     if (isCorrectTarget2st[i])
                     {
-                        if (!bikeSquareList[i].isSelect)
+                        if (!SquareList[i].isSelect)
                         {
-                            bikeSquareList[i].SetFalse();
+                            SquareList[i].SetFalse();
                             isAllSelect2 = false;
                         }
                     }
                     else
                     {
-                        if (bikeSquareList[i].isSelect)
+                        if (SquareList[i].isSelect)
                         {
-                            bikeSquareList[i].SetFalse();
+                            SquareList[i].SetFalse();
                         }
                     }
                 }
@@ -119,24 +114,8 @@ public class BikeClipManager : MonoBehaviour
         }
     }
 
-    private void LevelSetFault()
-    {
-        levelState = false;
-    }
 
-    private void LevelCa()
-    {
-        if(levelState)
-        {
-            GameManager.instance.AddHumanValue(25);
-        }
-        else
-        {
-            GameManager.instance.AddHumanValue(-10);
-        }
-    }
-
-    void OnVideoFinnished()
+    protected override void OnVideoFinnished()
     {
         ResetPuzzle();
         SetAs2st();
@@ -144,44 +123,26 @@ public class BikeClipManager : MonoBehaviour
         InteractManager.instance.SetAble();
     }
 
-
-    public void NextButtonDown()
+    protected override void ResetPuzzle()
     {
-        CheckAll();
-    }
-
-    private void SetAs1st()
-    {
-        for (int i = 0; i < bikeSquareList.Count; i++)
+        for (int i = 0; i < SquareList.Count; i++)
         {
-            if (isCorrectTarget1st[i])
-            {
-                bikeSquareList[i].isCorrectSquare = true;
-            }
+            SquareList[i].ResetPuzzle();
         }
     }
 
-    private void ResetPuzzle()
+    protected void SetAs2st()
     {
-        for (int i = 0; i < bikeSquareList.Count; i++)
-        {
-            bikeSquareList[i].ResetPuzzle();
-        }
-    }
-    private void SetAs2st()
-    {
-        for (int i = 0; i < bikeSquareList.Count; i++)
+        for (int i = 0; i < SquareList.Count; i++)
         {
             if (isCorrectTarget2st[i])
             {
-                bikeSquareList[i].isCorrectSquare = true;
+                SquareList[i].isCorrectSquare = true;
             }
         }
     }
-
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
-        //GlobalEventManager.instance.UnregisterEvent(receivedEventName, CheckAll);
         GlobalEventManager.instance.UnregisterEvent(onVideoEventName, OnVideoFinnished);
     }
 }
